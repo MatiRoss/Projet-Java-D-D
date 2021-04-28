@@ -37,6 +37,7 @@ public class Menu {
 				Magicien magicien = new Magicien(playerName);
 
 				System.out.println(magicien.toString());
+				System.out.println(magicien.toString());
 			}
 
 		}

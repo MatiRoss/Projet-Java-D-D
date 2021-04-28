@@ -20,8 +20,8 @@ public class Guerrier {
 	public Guerrier(String name, String picture, int hp, int attack) {
 		this.name = name;
 		this.picture = picture;
-		this.hp = 5;
-		this.attack = 5;
+		this.hp = hp;
+		this.attack = attack;
 	}
 
 	public void setName() {
@@ -43,7 +43,7 @@ public class Guerrier {
 	}
 
 	public String toString() {
-		return "Votre personnage s'appelle " + this.name + ", il a " + this.hp + " points de vie " + " et "
+		return "Votre personnage s'appelle " + this.name + ", il a " + this.hp + " points de vie et "
 				+ this.attack + " d'attaque ";
 	}
 }

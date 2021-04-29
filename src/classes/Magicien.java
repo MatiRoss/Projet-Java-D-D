@@ -1,11 +1,14 @@
 package classes;
 
+import gameBoard.Board;
+
 public class Magicien {
 
     private String name;
     private String picture;
     private int hp = 3;
     private int attack = 8;
+    private Board position;
 
     public Magicien() {
 
@@ -44,5 +47,8 @@ public class Magicien {
     public String toString() {
         return "Votre personnage s'appelle " + this.name + " c'est un(e) redoutable sorcier(e), il a " + this.hp + " points de vie et "
                 + this.attack + " d'attaque ";
+    }
+    public int getPosition() {
+        return position.getCell();
     }
 }

@@ -1,6 +1,7 @@
 package classes;
 
-
+import gameBoard.Dice;
+import gameBoard.Board;
 
 public class Guerrier {
 	
@@ -8,6 +9,8 @@ public class Guerrier {
 	private String picture;
 	private int hp = 5;
 	private int attack = 5;
+	private Board position;
+	private Dice dice;
 
 	public Guerrier() {
 		name = "";
@@ -45,5 +48,15 @@ public class Guerrier {
 	public String toString() {
 		return "Votre personnage s'appelle " + this.name + " c'est un(e) brave et fier(e) guerrier(e), il a " + this.hp + " points de vie et "
 				+ this.attack + " d'attaque ";
+	}
+
+
+
+	public int getPosition() {
+		return position.getCell();
+	}
+	
+	public int throwDice() {
+		return dice.getDice();
 	}
 }

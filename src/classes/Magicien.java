@@ -42,7 +42,7 @@ public class Magicien {
     }
 
     public String toString() {
-        return "Votre personnage s'appelle " + this.name + ", il a " + this.hp + " points de vie et "
+        return "Votre personnage s'appelle " + this.name + " c'est un(e) redoutable sorcier(e), il a " + this.hp + " points de vie et "
                 + this.attack + " d'attaque ";
     }
 }

@@ -1,32 +1,26 @@
 package gameBoard;
 
-import java.util.Arrays;
-
 public class Board {
-    private int[] board;  // tableau représentant le plateau
-    private int i;  // index d'une cellule du tableau
+    private int[] board;
+    private int cell;
+    private int nbCase;
 
-    public Board(int[] board) {
-        this.board = new int[63];
+    public Board() {
+        nbCase = 64;
+        cell = 1;
+        board = new int[nbCase];
     }
 
-    public int[] getBoard() {
-        return board;
-    }
-
-    public int getI() {
-        return i;
-    }
-
-    public void setBoard(int[] board) {
-        this.board = board;
-    }
-
-    public void setI(int i) {
-        this.i = i;
+    public int getNbCase() {
+        return nbCase;
     }
 
     public int getCell() {
-        return board[i];
+        return cell;
     }
+
+    public void setCell(int cell) {
+        this.cell = cell;
+    }
+
 }

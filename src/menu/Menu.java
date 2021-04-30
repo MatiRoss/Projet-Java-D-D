@@ -1,48 +1,49 @@
 package menu;
 
 import java.util.Scanner;
-
-import classes.Guerrier;
-import classes.Magicien;
+import characters.*;
+import gameBoard.Board;
 
 public class Menu {
+    Scanner clavier;
+    private Peasant player;
 
-
-    public Menu() { // Constructeur
-
+    public Menu() {
+        this.player = null;
     }
 
     public void createCharacter() {
-        Scanner clavier = new Scanner(System.in);
+        clavier = new Scanner(System.in);
+        MenuUtils launcher = new MenuUtils();
+        launcher.launchMenu();
+
         boolean choice = true;
-        System.out.println("Quelle personnage souhaitez-vous incarner? Taper 1 pour choisir un guerrier, taper 2 pour choisir un magicien ou 3 pour quitter le jeu");
+
         while (choice) {
             int playerCharacter = clavier.nextInt();
             if (playerCharacter == 1) {
                 System.out.println("Veuillez taper le nom de votre personnage ou tapez 'q' pour quitter le jeu");
                 String playerName = clavier.next();
                 if (playerName.equals("q")) {
-                    System.out.println("Navré de vous voir déjà partir, peut être n'étiez-vous pas de taille...");
-                    System.exit(0);
+                    launcher.exitGame();
                 }
                 System.out.println("Votre personnage s'appelera " + playerName + ", êtes-vous sûr(e) de votre choix? Taper 'o' pour confirmer, 'n' pour modifier ou 'q' pour quitter le jeu");
                 String playerChoice = clavier.next();
                 switch (playerChoice) {
                     case "o": {
-                        Guerrier guerrier = new Guerrier(playerName);
-                        System.out.println(guerrier.toString());
+                        player = new Guerrier(playerName);
+                        System.out.println(player.toString());
                         break;
                     }
                     case "n": {
                         System.out.println("Veuillez taper le nom (définitif!) de votre personnage");
                         String playerName2 = clavier.next();
-                        Guerrier player = new Guerrier(playerName2);
+                        player = new Guerrier(playerName);
                         System.out.println(player.toString());
                         break;
                     }
                     case "q": {
-                        System.out.println("Navré de vous voir déjà partir, peut être n'étiez-vous pas de taille...");
-                        System.exit(0);
+                        launcher.exitGame();
                     }
                 }
                 choice = false;
@@ -50,38 +51,53 @@ public class Menu {
                 System.out.println("Veuillez taper le nom de votre personnage ou tapez 'q' pour quitter le jeu");
                 String playerName = clavier.next();
                 if (playerName.equals("q")) {
-                    System.out.println("Navré de vous voir déjà partir, peut être n'étiez-vous pas de taille...");
-                    System.exit(0);
+                    launcher.exitGame();
                 }
                 System.out.println("Votre personnage s'appelera " + playerName + ", êtes-vous sûr(e) de votre choix? Taper 'o' pour confirmer, 'n' pour modifier ou 'q' pour quitter le jeu");
                 String playerChoice = clavier.next();
                 switch (playerChoice) {
                     case "o": {
-                        Magicien player = new Magicien(playerName);
+                        player = new Magicien(playerName);
                         System.out.println(player.toString());
-                       
                         break;
                     }
                     case "n": {
                         System.out.println("Veuillez taper le nom (définitif!) de votre personnage");
                         String playerName2 = clavier.next();
-                        Magicien player = new Magicien(playerName2);
+                        player = new Magicien(playerName2);
                         System.out.println(player.toString());
                         break;
                     }
                     case "q": {
-                        System.out.println("Navré de vous voir déjà partir, peut être n'étiez-vous pas de taille...");
-                        System.exit(0);
+                        launcher.exitGame();
                     }
                 }
                 choice = false;
             } else if (playerCharacter == 3) {
-                System.out.println("Navré de vous voir déjà partir, peut être n'étiez-vous pas de taille...");
-                System.exit(0);
+                launcher.exitGame();
             } else {
                 System.out.println("Veuillez taper 1,2 ou 3 et pas autre chose!!");
             }
         }
-        System.out.println("...C'est parti!");
     }
+
+    public void playGame() {
+        MenuUtils launcher = new MenuUtils();
+        Board board = new Board();
+
+        while (board.getCell() < board.getNbCase()) {
+            System.out.println("Voulez-vous lancer le dé? Taper 'oui' ou 'non' ");
+            String lanceDe = clavier.next();
+            if (lanceDe.equals("oui")) {
+                int diceValue = player.throwDice();
+                board.setCell(board.getCell() + diceValue);
+                System.out.println("Vous lancez le dé et faites un " + diceValue);
+                System.out.println("Vous avancez à la case " + board.getCell());
+            } else {
+                launcher.exitGame();
+            }
+        }
+        System.exit(0);
+    }
+
 }

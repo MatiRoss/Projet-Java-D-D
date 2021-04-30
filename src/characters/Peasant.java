@@ -45,8 +45,12 @@ public abstract class Peasant {
         return attack;
     }
 
-    public String toString() {
-        return "Votre personnage s'appelle " + this.name + " c'est un(e) brave et fier(e) guerrier(e), il a " + this.hp + " points de vie et "
+    public String descriptionWarrior() {
+        return "Votre personnage s'appelle " + this.name + " c'est un brave et fier guerrier, il a " + this.hp + " points de vie et "
+                + this.attack + " d'attaque ";
+    }
+    public String descriptionWizard() {
+        return "Votre personnage s'appelle " + this.name + " c'est une redoutable magicienne, elle a " + this.hp + " points de vie et "
                 + this.attack + " d'attaque ";
     }
     public int throwDice() {

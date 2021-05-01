@@ -7,42 +7,42 @@ import gameBoard.Board;
 
 
 public class Menu {
-    Scanner clavier;
+    private Scanner keyboard;
     private Peasant player;
 
     public Menu() {
         this.player = null;
     }
 
-    public Peasant createCharacter() {
+    public void createCharacter() {
 
-        clavier = new Scanner(System.in);
+        keyboard = new Scanner(System.in);
         MenuText text = new MenuText();
         text.launchMenu();
         boolean choice = true;
         while (choice) {
-            int playerCharacter = clavier.nextInt();
+            int playerCharacter = keyboard.nextInt();
             if (playerCharacter == 1) {
                 text.nameChoice();
-                String playerName = clavier.next();
+                String playerName = keyboard.next();
                 if (playerName.equals("q")) {
                     text.exitGame();
                 }
                 System.out.println("");
                 System.out.println("Votre personnage s'appelera " + playerName + ", êtes-vous sûr(e) de votre choix?");
                 text.checkName();
-                String playerChoice = clavier.next();
+                String playerChoice = keyboard.next();
                 switch (playerChoice) {
                     case "o": {
-                        player = new Guerrier(playerName);
+                        player = new Warrior(playerName);
                         System.out.println(player.descriptionWarrior());
                         text.whiteSpace();
                         break;
                     }
                     case "n": {
                         text.finalName();
-                        String playerName2 = clavier.next();
-                        player = new Guerrier(playerName2);
+                        String playerName2 = keyboard.next();
+                        player = new Warrior(playerName2);
                         System.out.println(player.descriptionWarrior());
                         text.whiteSpace();
                         break;
@@ -54,24 +54,24 @@ public class Menu {
                 choice = false;
             } else if (playerCharacter == 2) {
                 text.nameChoice();
-                String playerName = clavier.next();
+                String playerName = keyboard.next();
                 if (playerName.equals("q")) {
                     text.exitGame();
                 }
                 System.out.println("Votre personnage s'appelera " + playerName + ", êtes-vous sûr(e) de votre choix?");
                 text.checkName();
-                String playerChoice = clavier.next();
+                String playerChoice = keyboard.next();
                 switch (playerChoice) {
                     case "o": {
-                        player = new Magicien(playerName);
+                        player = new Wizard(playerName);
                         System.out.println(player.descriptionWizard());
                         text.whiteSpace();
                         break;
                     }
                     case "n": {
                         text.finalName();
-                        String playerName2 = clavier.next();
-                        player = new Magicien(playerName2);
+                        String playerName2 = keyboard.next();
+                        player = new Wizard(playerName2);
                         System.out.println(player.descriptionWizard());
                         text.whiteSpace();
                         break;
@@ -88,13 +88,12 @@ public class Menu {
             }
         }
         text.launchGame();
-        String start = clavier.next();
+        String start = keyboard.next();
         if (start.equalsIgnoreCase("o")) {
             playGame();
         } else {
             text.exitGame();
         }
-        return player;
     }
 
     public void playGame() {
@@ -104,7 +103,7 @@ public class Menu {
 
         while (board.getCell() < board.getNbCase()) {
             text.rollDice();
-            String lanceDe = clavier.next();
+            String lanceDe = keyboard.next();
             if (lanceDe.equals("o")) {
                 int diceValue = player.throwDice();
                 board.setCell(board.getCell() + diceValue);

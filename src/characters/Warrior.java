@@ -1,8 +1,8 @@
 package characters;
 
-public class Guerrier extends Peasant {
+public class Warrior extends Peasant {
 
-    public Guerrier(String name) {
+    public Warrior(String name) {
         super(name, 5, 5);
     }
 

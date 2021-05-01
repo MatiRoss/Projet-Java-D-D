@@ -1,8 +1,8 @@
 package characters;
 
-public class Magicien extends Peasant {
+public class Wizard extends Peasant {
 
-    public Magicien(String name) {
+    public Wizard(String name) {
         super(name, 3, 8);
     }
 

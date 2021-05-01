@@ -1,9 +1,9 @@
 import menu.Menu;
 import game.Game;
 
-public class Main {
+public class App {
 
-    public Main() {
+    public App() {
     }
 
     public static void main(String[] args) {

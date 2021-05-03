@@ -58,6 +58,17 @@ public abstract class Character {
         dice = (int) (Math.random() * 6 + 1);
         return dice;
     }
+
+    @Override
+    public String toString() {
+        return "Character{" +
+                "name='" + name + '\'' +
+                ", picture='" + picture + '\'' +
+                ", hp=" + hp +
+                ", attack=" + attack +
+                '}';
+    }
+
     /*
     public int getPosition() {
         return position.getCell();

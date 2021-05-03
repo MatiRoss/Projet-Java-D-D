@@ -8,14 +8,15 @@ import characters.Character;
 
 public class Menu {
     private Character player;
+    private final Scanner keyboard;
 
     public Menu() {
         this.player = null;
+        this.keyboard = new Scanner(System.in);
     }
 
     public void createCharacter() {
 
-        Scanner keyboard = new Scanner(System.in);
         MenuText text = new MenuText();
         text.launchMenu();
         boolean choice = true;

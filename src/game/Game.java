@@ -1,8 +1,11 @@
 package game;
 
+import characters.*;
 import gameBoard.Board;
 import game.CharacterOutOfBoard;
+import game.Cell;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import menu.*;
@@ -11,8 +14,9 @@ import java.util.Scanner;
 
 public class Game {
     private Menu menu;
-    Scanner keyboard;
-    MenuText text;
+    private Scanner keyboard;
+    private MenuText text;
+
 
     public Game(Menu menu) {
         this.menu = menu;
@@ -65,5 +69,6 @@ public class Game {
         }
         System.exit(0);
     }
+
 
 }

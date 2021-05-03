@@ -15,6 +15,8 @@ public class App {
         game.gameMenu();
         game.playGame();
 
-
+     /*   Test test = new Test();
+        test.addToBoard();
+*/
     }
 }

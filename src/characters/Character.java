@@ -1,21 +1,21 @@
 package characters;
 
-public abstract class Peasant {
+public abstract class Character {
 
     private String name;
     private String picture;
     private int hp;
     private int attack;
 
-    public Peasant() {
+    public Character() {
 
     }
 
-    public Peasant(String name) {
+    public Character(String name) {
         this.name = name;
     }
 
-    public Peasant(String name, int hp, int attack) {
+    public Character(String name, int hp, int attack) {
         this.name = name;
         this.hp = hp;
         this.attack = attack;

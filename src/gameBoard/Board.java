@@ -23,4 +23,7 @@ public class Board {
         this.cell = cell;
     }
 
+    public int[] getBoard() {
+        return board;
+    }
 }

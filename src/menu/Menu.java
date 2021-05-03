@@ -3,12 +3,11 @@ package menu;
 import java.util.Scanner;
 
 import characters.*;
-import gameBoard.Board;
+import characters.Character;
 
 
 public class Menu {
-    private Scanner keyboard;
-    private Peasant player;
+    private Character player;
 
     public Menu() {
         this.player = null;
@@ -16,7 +15,7 @@ public class Menu {
 
     public void createCharacter() {
 
-        keyboard = new Scanner(System.in);
+        Scanner keyboard = new Scanner(System.in);
         MenuText text = new MenuText();
         text.launchMenu();
         boolean choice = true;
@@ -88,34 +87,10 @@ public class Menu {
             }
         }
         text.launchGame();
-        String start = keyboard.next();
-        if (start.equalsIgnoreCase("o")) {
-            playGame();
-        } else {
-            text.exitGame();
-        }
+
     }
 
-    public void playGame() {
-
-        MenuText text = new MenuText();
-        Board board = new Board();
-
-        while (board.getCell() < board.getNbCase()) {
-            text.rollDice();
-            String lanceDe = keyboard.next();
-            if (lanceDe.equals("o")) {
-                int diceValue = player.throwDice();
-                board.setCell(board.getCell() + diceValue);
-                System.out.println(player.getName() + " a " + player.getHp() + " points de vie et " + player.getAttack() + " d'attaque");
-                System.out.println(" ---------------------------------------------------");
-                System.out.println("        Vous lancez le dé et faites un... " + diceValue + " !");
-                System.out.println("        Vous avancez jusqu'à la case " + board.getCell() + ".");
-                System.out.println(" ---------------------------------------------------");
-            } else {
-                text.exitGame();
-            }
-        }
-        System.exit(0);
+    public Character getPlayer() {
+        return player;
     }
 }

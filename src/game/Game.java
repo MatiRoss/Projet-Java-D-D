@@ -1,35 +1,69 @@
 package game;
 
 import gameBoard.Board;
-import characters.*;
+import game.CharacterOutOfBoard;
+
+import java.util.Scanner;
+
 import menu.*;
 
 import java.util.Scanner;
 
 public class Game {
-    Scanner clavier;
-    private Peasant player;
+    private Menu menu;
+    Scanner keyboard;
+    MenuText text;
 
-  /*  public void playGame() {
-        MenuText text = new MenuText();
+    public Game(Menu menu) {
+        this.menu = menu;
+        keyboard = new Scanner(System.in);
+        text = new MenuText();
+    }
+
+    public void gameMenu() throws Exception {
+        String start = keyboard.next();
+        if (start.equalsIgnoreCase("o")) {
+            playGame();
+        } else {
+            text.exitGame();
+        }
+    }
+
+    public void playGame() throws Exception {
+
         Board board = new Board();
-        Menu menu = new Menu();
 
         while (board.getCell() < board.getNbCase()) {
-            text.rollDice();
-            String lanceDe = clavier.next();
-            if (lanceDe.equals("o")) {
-                int diceValue = player.throwDice();
-                board.setCell(board.getCell() + diceValue);
-                System.out.println(" ---------------------------------------------------");
-                System.out.println("        Vous lancez le dé et faites un... " + diceValue + " !");
+            try {
+                text.rollDice();
+                String lanceDe = keyboard.next();
+                if (lanceDe.equals("o")) {
+                    int diceValue = menu.getPlayer().throwDice();
+                    board.setCell(board.getCell() + diceValue);
+                    System.out.println(menu.getPlayer().getName() + " a " + menu.getPlayer().getHp() + " points de vie et " + menu.getPlayer().getAttack() + " d'attaque");
+                    System.out.println(" ---------------------------------------------------");
+                    System.out.println("        Vous lancez le dé et faites un... " + diceValue + " !");
+                    if (board.getCell() < board.getNbCase()) {
+                        System.out.println("        Vous avancez jusqu'à la case " + board.getCell() + ".");
+                        System.out.println(" ---------------------------------------------------");
+                    } else if (board.getCell() > board.getBoard().length) {
+                        throw new CharacterOutOfBoard();
+                    }
+                } else if (lanceDe.equals("r")) {
+                    text.launchGame();
+                    gameMenu();
+                    playGame();
+                } else {
+                    text.exitGame();
+                }
+            } catch (CharacterOutOfBoard e) {
+                board.setCell(board.getBoard().length);
                 System.out.println("        Vous avancez jusqu'à la case " + board.getCell() + ".");
                 System.out.println(" ---------------------------------------------------");
-            } else {
-                text.exitGame();
+                text.youWin();
             }
         }
         System.exit(0);
     }
-*/
+
 }

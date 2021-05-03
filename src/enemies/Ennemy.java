@@ -1,6 +1,8 @@
 package enemies;
 
-public abstract class Ennemy {
+import game.Cell;
+
+public abstract class Ennemy extends Cell {
 
     private String name;
     private String picture;

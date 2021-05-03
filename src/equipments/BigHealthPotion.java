@@ -1,6 +1,8 @@
 package equipments;
 
-public class BigHealthPotion {
+import game.Cell;
+
+public class BigHealthPotion extends Cell {
     String name;
     int health;
 

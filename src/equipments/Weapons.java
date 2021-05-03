@@ -1,6 +1,8 @@
 package equipments;
 
-public abstract class Weapons {
+import game.Cell;
+
+public abstract class Weapons extends Cell {
     private String name;
     private int power;
 

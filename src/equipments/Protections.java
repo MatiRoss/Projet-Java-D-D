@@ -1,6 +1,8 @@
 package equipments;
 
-public abstract class Protections {
+import game.Cell;
+
+public abstract class Protections extends Cell {
     String name;
     int defense;
 

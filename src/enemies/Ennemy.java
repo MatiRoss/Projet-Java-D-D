@@ -1,16 +1,18 @@
 package enemies;
 
-import game.Cell;
+import characters.Character;
+import game.*;
+import menu.*;
 
-public abstract class Ennemy extends Cell {
+public class Ennemy extends Cell {
 
     private String name;
     private String picture;
     private int hp;
     private int attack;
+    private Menu menu;
 
     public Ennemy() {
-
     }
 
     public Ennemy(String name) {
@@ -22,6 +24,14 @@ public abstract class Ennemy extends Cell {
         this.hp = hp;
         this.attack = attack;
     }
+
+    @Override
+    public void interaction(Character player) {
+        System.out.println('\n' + "Vous attaquez le " + getName() + " et lui infligez " + player.getAttack() + " points de dégats" + '\n');
+        setHp(getHp() - player.getAttack());
+        System.out.println("L'ennemi a encore " + getHp() + " points de vie.");
+    }
+
 
     public String getName() {
         return name;
@@ -45,5 +55,10 @@ public abstract class Ennemy extends Cell {
 
     public int getAttack() {
         return attack;
+    }
+
+    @Override
+    public String toString() {
+        return "Vous tombez sur un " + name + " il a " + hp + " points de vie et " + attack + " d'attaque";
     }
 }

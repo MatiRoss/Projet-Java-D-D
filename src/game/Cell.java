@@ -1,63 +1,15 @@
 package game;
 
 import characters.Character;
-import characters.Warrior;
-import characters.Wizard;
 import enemies.Ennemy;
-import equipments.BigHealthPotion;
-import equipments.HealthPotion;
-import equipments.Protections;
-import equipments.Weapons;
+import menu.*;
 
-public class Cell {
-
-    private Ennemy ennemy;
-    private BigHealthPotion bigHealthPotion;
-    private HealthPotion healthPotion;
-    private Protections defensiveStuff;
-    private Weapons offensiveStuff;
+public abstract class Cell {
 
     public Cell() {
     }
 
-    public Ennemy getEnnemy() {
-        return ennemy;
-    }
+    public abstract void interaction(Character player);
 
-    public BigHealthPotion getBigHealthPotion() {
-        return bigHealthPotion;
-    }
-
-    public HealthPotion getHealthPotion() {
-        return healthPotion;
-    }
-
-    public Protections getDefensiveStuff() {
-        return defensiveStuff;
-    }
-
-    public Weapons getOffensiveStuff() {
-        return offensiveStuff;
-    }
-
-    public void setEnnemy(Ennemy ennemy) {
-        this.ennemy = ennemy;
-    }
-
-    public void setBigHealthPotion(BigHealthPotion bigHealthPotion) {
-        this.bigHealthPotion = bigHealthPotion;
-    }
-
-    public void setHealthPotion(HealthPotion healthPotion) {
-        this.healthPotion = healthPotion;
-    }
-
-    public void setDefensiveStuff(Protections defensiveStuff) {
-        this.defensiveStuff = defensiveStuff;
-    }
-
-    public void setOffensiveStuff(Weapons offensiveStuff) {
-        this.offensiveStuff = offensiveStuff;
-    }
 }
 

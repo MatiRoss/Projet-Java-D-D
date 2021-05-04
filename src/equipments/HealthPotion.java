@@ -1,5 +1,6 @@
 package equipments;
 
+import characters.Character;
 import game.Cell;
 
 public class HealthPotion extends Cell {
@@ -8,7 +9,12 @@ public class HealthPotion extends Cell {
 
     public HealthPotion() {
         this.health = 2;
-        this.name = "Health Potion";
+        this.name = "Petite potion de soin";
+    }
+
+    @Override
+    public void interaction(Character player) {
+
     }
 
     public int getPower() {
@@ -21,5 +27,10 @@ public class HealthPotion extends Cell {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        return "Vous tombez sur un coffre. Vous l'ouvrez..." + '\n' + "Wow quelle chance! Vous avez trouvé une " + name + " ! Elle rend " + health + " points de vie.";
     }
 }

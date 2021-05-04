@@ -1,8 +1,15 @@
 package equipments;
 
+import characters.Character;
+
 public class Shield extends Protections {
 
     public Shield() {
-        super("Shield", 1);
+        super("Bouclier", 1);
+    }
+
+    @Override
+    public void interaction(Character player) {
+
     }
 }

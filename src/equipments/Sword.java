@@ -1,8 +1,16 @@
 package equipments;
 
+import characters.Character;
+
 public class Sword extends Weapons {
 
     public Sword() {
-        super("Sword", 5);
+        super("Epée", 5);
     }
+
+    @Override
+    public void interaction(Character player) {
+
+    }
+
 }

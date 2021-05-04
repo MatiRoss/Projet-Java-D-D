@@ -36,9 +36,6 @@ public abstract class Protections extends Cell {
 
     @Override
     public String toString() {
-        return "Protections{" +
-                "name='" + name + '\'' +
-                ", defense=" + defense +
-                '}';
+        return "Vous tombez sur un coffre. Vous l'ouvrez..." + '\n' + "Wow quelle chance, vous avez trouvé un " + name + "! Il bloque " + defense + " points de dégats.";
     }
 }

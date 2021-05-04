@@ -1,29 +1,67 @@
 package gameBoard;
 
+import enemies.*;
+import equipments.*;
+import game.*;
+
+import java.util.ArrayList;
+
 public class Board {
-    private int[] board;
-    private int cell;
-    private int nbCase;
+
+    private int playerPosition;
+    private ArrayList<Cell> board;
 
     public Board() {
-        nbCase = 64;
-        cell = 1;
-        board = new int[nbCase];
+        board = new ArrayList<Cell>();
+
+        Ennemy gobelin = new Gobelin();
+        Ennemy sorcerer = new Sorcerer();
+        Ennemy dragon = new Dragon();
+        HealthPotion potion = new HealthPotion();
+        BigHealthPotion bigPotion = new BigHealthPotion();
+        Weapons club = new Club();
+        Weapons sword = new Sword();
+        Protections shield = new Shield();
+        EmptyCell emptyCell = new EmptyCell();
+
+        board.add(gobelin);
+        board.add(gobelin);
+        board.add(gobelin);
+        board.add(gobelin);
+        board.add(gobelin);
+        board.add(gobelin);
+        board.add(gobelin);
+        board.add(gobelin);
+        board.add(gobelin);
+        board.add(gobelin);
+        board.add(gobelin);
+        board.add(gobelin);
+        board.add(gobelin);
+        board.add(gobelin);
+        board.add(gobelin);
+        board.add(gobelin);
+        board.add(gobelin);
+        board.add(gobelin);
+        board.add(gobelin);
+        board.add(gobelin);
+        board.add(gobelin);
+
+
     }
 
-    public int getNbCase() {
-        return nbCase;
-    }
-
-    public int getCell() {
-        return cell;
-    }
-
-    public void setCell(int cell) {
-        this.cell = cell;
-    }
-
-    public int[] getBoard() {
+    public ArrayList<Cell> getBoard() {
         return board;
+    }
+
+    public void setBoard(ArrayList<Cell> board) {
+        this.board = board;
+    }
+
+    public int getPlayerPosition() {
+        return playerPosition;
+    }
+
+    public void setPlayerPosition(int playerPosition) {
+        this.playerPosition = playerPosition;
     }
 }

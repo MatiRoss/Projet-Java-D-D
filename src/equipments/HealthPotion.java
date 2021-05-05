@@ -14,14 +14,17 @@ public class HealthPotion extends Cell {
 
     @Override
     public void interaction(Character player) {
-
+        System.out.println("Vous buvez la potion... Glouglou... hips!" + '\n');
+        System.out.println("Vos points de vie augmentent de " + getHealth() + "!");
+        player.setHp(player.getHp() + getHealth());
+        System.out.println("Vous avez désormais " + player.getHp() + " points de vie.");
     }
 
-    public int getPower() {
+    public int getHealth() {
         return health;
     }
 
-    public void setPower(int power) {
+    public void setHealth(int power) {
         this.health = power;
     }
 

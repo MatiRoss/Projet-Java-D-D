@@ -11,7 +11,7 @@ public class App {
         Menu menu = new Menu();
         menu.createCharacter();
 
-        Game game = new Game(menu);
+        Game game = new Game(menu.getPlayer());
         game.gameMenu();
         game.playGame();
     }

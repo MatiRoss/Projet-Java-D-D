@@ -2,7 +2,6 @@ package enemies;
 
 import characters.Character;
 import game.*;
-import menu.*;
 
 public class Ennemy extends Cell {
 
@@ -10,7 +9,6 @@ public class Ennemy extends Cell {
     private String picture;
     private int hp;
     private int attack;
-    private Menu menu;
 
     public Ennemy() {
     }
@@ -27,11 +25,24 @@ public class Ennemy extends Cell {
 
     @Override
     public void interaction(Character player) {
-        System.out.println('\n' + "Vous attaquez le " + getName() + " et lui infligez " + player.getAttack() + " points de dégats" + '\n');
-        setHp(getHp() - player.getAttack());
-        System.out.println("L'ennemi a encore " + getHp() + " points de vie.");
-    }
+        while (getHp() > 0 && player.getHp() > 0) {
 
+            System.out.println('\n' + "Vous attaquez le " + getName() + " et lui infligez " + player.getAttack() + " points de dégats" + '\n');
+            setHp(getHp() - player.getAttack());
+            if (getHp() > 0) {
+                System.out.println("L'ennemi a encore " + getHp() + " points de vie." + '\n');
+                System.out.println("Le " + getName() + " vous attaque et vous inflige " + getAttack() + " points de dégats" + '\n');
+                player.setHp(player.getHp() - getAttack());
+                if (player.getHp() <= 0) {
+                    System.out.println("Perdu! Vous êtes mort...");
+                } else {
+                    System.out.println("Il vous reste " + player.getHp() + " points de vie." + '\n');
+                }
+            } else if (getHp() <= 0) {
+                System.out.println("Vous avez vaincu le " + getName() + "!" + '\n');
+            }
+        }
+    }
 
     public String getName() {
         return name;

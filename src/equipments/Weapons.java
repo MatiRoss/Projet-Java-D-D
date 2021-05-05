@@ -37,6 +37,6 @@ public abstract class Weapons extends Cell {
 
     @Override
     public String toString() {
-        return "Vous tombez sur un coffre. Vous l'ouvrez..." + '\n' + "Wow quelle chance, vous avez trouvé une " + name + "! Elle a " + power + " d'attaque.";
+        return "Vous tombez sur un coffre. Vous l'ouvrez..." + '\n' + "Wow quelle chance, vous avez trouvé un(e) " + name + "! (+" + power + " d'attaque)";
     }
 }

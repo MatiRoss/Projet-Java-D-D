@@ -9,7 +9,7 @@ public class Wizard extends Character {
     Philter philter;
 
     public Wizard(String name) {
-        super(name, 3, 8);
+        super(name, 3, 8, 6, 15);
     }
 
     public String toString() {

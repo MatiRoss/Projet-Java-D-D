@@ -16,7 +16,8 @@ public class Club extends Weapons {
             System.out.println('\n' + "... Mais vous êtes un magicien, les armes c'est pour les barbares!");
         } else {
             if (player.getAttack() < player.getAttackMax()) {
-                System.out.println("Vous vous équipez de la " + getName() + "." + '\n');
+                System.out.println('\n' + "Vous vous équipez de la " + getName() + ".");
+                player.setAttack(player.getAttack());
                 player.setAttack(player.getAttack() + getPower());
                 if (player.getAttack() > player.getAttackMax()) {
                     player.setAttack(player.getAttackMax());

@@ -3,7 +3,10 @@ package game;
 import characters.Character;
 import menu.*;
 import gameBoard.Board;
+import tools.Timer;
 
+import java.util.Collections;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
@@ -12,13 +15,15 @@ public class Game {
     private Scanner keyboard;
     private MenuText text;
     private Board board;
-
+    private Timer timer;
 
     public Game(Character player) {
+        timer = new Timer();
         this.player = player;
         keyboard = new Scanner(System.in);
         text = new MenuText();
         board = new Board();
+        Collections.shuffle(board.getBoard(), new Random());
     }
 
     public void gameMenu() throws Exception {
@@ -34,6 +39,7 @@ public class Game {
 
         while (board.getPlayerPosition() <= board.getBoard().size() && player.getHp() > 0) {
             try {
+                timer.waitSec(5, true, true);
                 text.rollDice();
                 String lanceDe = keyboard.next();
                 if (lanceDe.equals("o")) {
@@ -46,6 +52,7 @@ public class Game {
                         System.out.println("        Vous avancez jusqu'à la case " + board.getPlayerPosition() + ".");
                         System.out.println(" ---------------------------------------------------");
                         System.out.println(board.getBoard().get(board.getPlayerPosition()).toString());
+                        System.out.println("");
                         Cell cell = board.getBoard().get(board.getPlayerPosition());
 
                         cell.interaction(player);

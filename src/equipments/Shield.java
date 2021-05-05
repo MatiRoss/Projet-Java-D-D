@@ -5,7 +5,7 @@ import characters.Character;
 public class Shield extends Protections {
 
     public Shield() {
-        super("Bouclier", 1);
+        super("Bouclier", 2);
     }
 
     @Override

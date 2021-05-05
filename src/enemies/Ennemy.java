@@ -26,20 +26,24 @@ public class Ennemy extends Cell {
     @Override
     public void interaction(Character player) {
         while (getHp() > 0 && player.getHp() > 0) {
-
+            System.out.println("____________________________________________________________________________________________________________");
             System.out.println('\n' + "Vous attaquez le " + getName() + " et lui infligez " + player.getAttack() + " points de dégats" + '\n');
             setHp(getHp() - player.getAttack());
             if (getHp() > 0) {
                 System.out.println("L'ennemi a encore " + getHp() + " points de vie." + '\n');
+                System.out.println("--------------------------------------------------------------------------------------------------------");
+                System.out.println("________________________________________________________________________________________________________");
                 System.out.println("Le " + getName() + " vous attaque et vous inflige " + getAttack() + " points de dégats" + '\n');
                 player.setHp(player.getHp() - getAttack());
                 if (player.getHp() <= 0) {
                     System.out.println("Perdu! Vous êtes mort...");
                 } else {
                     System.out.println("Il vous reste " + player.getHp() + " points de vie." + '\n');
+                    System.out.println("----------------------------------------------------------------------------------------------------");
                 }
             } else if (getHp() <= 0) {
                 System.out.println("Vous avez vaincu le " + getName() + "!" + '\n');
+                System.out.println("________________________________________________________________________________________________________");
             }
         }
     }
@@ -70,6 +74,6 @@ public class Ennemy extends Cell {
 
     @Override
     public String toString() {
-        return "Vous tombez sur un " + name + " il a " + hp + " points de vie et " + attack + " d'attaque";
+        return "Vous tombez sur un " + name + ", il a " + hp + " points de vie et " + attack + " d'attaque.";
     }
 }

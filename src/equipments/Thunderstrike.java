@@ -17,6 +17,7 @@ public class Thunderstrike extends Weapons {
             if (player.getAttack() < player.getAttackMax()) {
                 System.out.println('\n' + "Vous lisez attentivement le livre de " + getName() + "...");
                 System.out.println("... Vous avez appris le " + getName() + "!" + '\n');
+                player.setAttack(player.getAttack());
                 player.setAttack(player.getAttack() + getPower());
 
                 if (player.getAttack() > player.getAttackMax()) {

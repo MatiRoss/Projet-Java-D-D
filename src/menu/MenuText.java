@@ -61,6 +61,7 @@ public class MenuText {
         System.out.println("");
         System.out.println("Voulez-vous lancer le dé?");
         System.out.println("(Tapez 'o' pour lancer le dé, 'r' pour recommencer la partie ou 'n' pour quitter le jeu)");
+        System.out.println("");
     }
 
     public void youWin() {

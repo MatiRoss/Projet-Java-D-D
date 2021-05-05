@@ -16,6 +16,7 @@ public class Sword extends Weapons {
         } else {
             if (player.getAttack() < player.getAttackMax()) {
                 System.out.println("Vous vous équipez de la " + getName() + "." + '\n');
+                player.setAttack(player.getAttack());
                 player.setAttack(player.getAttack() + getPower());
                 if (player.getAttack() > player.getAttackMax()) {
                     player.setAttack(player.getAttackMax());

@@ -13,8 +13,9 @@ public class Game {
 
     private Character player;
     private Scanner keyboard;
-    private MenuText text;
     private Board board;
+
+    private MenuText text;
     private Timer timer;
 
     public Game(Character player) {
@@ -22,50 +23,39 @@ public class Game {
         this.player = player;
         keyboard = new Scanner(System.in);
         text = new MenuText();
-        board = new Board();
+        board = new Board("hard");
         Collections.shuffle(board.getBoard(), new Random());
-    }
-
-    public void gameMenu() throws Exception {
-        String start = keyboard.next();
-        if (start.equalsIgnoreCase("o")) {
-            playGame();
-        } else {
-            text.exitGame();
-        }
     }
 
     public void playGame() throws Exception {
 
-        while (board.getPlayerPosition() <= board.getBoard().size() && player.getHp() > 0) {
+        while (board.getPlayerPosition() < board.getBoard().size() && player.getHp() > 0) {
             try {
                 timer.waitSec(5, true, true);
                 text.rollDice();
+                int diceValue = player.throwDice();
                 String lanceDe = keyboard.next();
                 if (lanceDe.equals("o")) {
-                    int diceValue = player.throwDice();
                     board.setPlayerPosition(board.getPlayerPosition() + diceValue);
-                    System.out.println(player.getName() + " a " + player.getHp() + " points de vie et " + player.getAttack() + " d'attaque");
                     System.out.println(" ---------------------------------------------------");
                     System.out.println("        Vous lancez le dé et faites un... " + diceValue + " !");
                     if (board.getPlayerPosition() < board.getBoard().size()) {
                         System.out.println("        Vous avancez jusqu'à la case " + board.getPlayerPosition() + ".");
                         System.out.println(" ---------------------------------------------------");
+                        System.out.println(player.getName() + " ==>  PV : " + player.getHp() + " ATK : " + player.getAttack());
+                        System.out.println(" ---------------------------------------------------");
                         System.out.println(board.getBoard().get(board.getPlayerPosition()).toString());
-                        System.out.println("");
-                        Cell cell = board.getBoard().get(board.getPlayerPosition());
 
+                        Cell cell = board.getBoard().get(board.getPlayerPosition());
                         cell.interaction(player);
 
                     } else if (board.getPlayerPosition() > board.getBoard().size()) {
                         throw new CharacterOutOfBoard();
                     }
                 } else if (lanceDe.equals("r")) {
-                    text.launchGame();
-                    gameMenu();
-                    playGame();
+                    startNewGame();
                 } else {
-                    text.exitGame();
+                    exitGame();
                 }
             } catch (CharacterOutOfBoard e) {
                 board.setPlayerPosition(board.getBoard().size());
@@ -73,11 +63,41 @@ public class Game {
                 System.out.println(" ---------------------------------------------------");
             }
         }
-        if (player.getHp() < 0) {
-            System.out.println("Vous êtes mort... Perdu!");
-        } else {
-            text.youWin();
-            System.exit(0);
+        if (player.getHp() <= 0) {
+            restartChoice();
         }
+        text.youWin();
+        restartChoice();
+    }
+
+    public void startNewGame() throws Exception {
+        text.launchGame();
+        board.setPlayerPosition(0);
+        player.setHp(player.getHpMin());
+        player.setAttack(player.getAttackMin());
+        this.board = new Board();
+        playGame();
+    }
+
+    public void restartGame() throws Exception {
+        text.launchGame();
+        board.setPlayerPosition(0);
+        this.board = new Board();
+        playGame();
+    }
+
+    public void restartChoice() throws Exception {
+        System.out.println("Voulez-vous réessayer?          OUI ('o')      NON ('n')");
+        String restartChoice = keyboard.next();
+        if (restartChoice.equals("o")) {
+            startNewGame();
+        } else {
+            exitGame();
+        }
+    }
+
+    public void exitGame() {
+        System.out.println("Navré de vous voir déjà partir, peut être n'étiez-vous pas de taille...");
+        System.exit(0);
     }
 }

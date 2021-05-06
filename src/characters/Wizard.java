@@ -1,15 +1,30 @@
 package characters;
 
-import equipments.*;
-
 public class Wizard extends Character {
 
-    Thunderstrike thunderstrike;
-    Fireball fireball;
-    Philter philter;
+    private boolean hasThunderstrike;
+    private boolean hasFireBall;
 
     public Wizard(String name) {
-        super(name, 3, 8, 6, 15);
+        super(name, 3, 3, 6, 8, 8, 15);
+        this.hasThunderstrike = false;
+        this.hasFireBall = false;
+    }
+
+    public void setHasThunderstrike(boolean hasThunderstrike) {
+        this.hasThunderstrike = hasThunderstrike;
+    }
+
+    public void setHasFireBall(boolean hasFireBall) {
+        this.hasFireBall = hasFireBall;
+    }
+
+    public boolean hasThunderstrike() {
+        return hasThunderstrike;
+    }
+
+    public boolean hasFireBall() {
+        return hasFireBall;
     }
 
     public String toString() {

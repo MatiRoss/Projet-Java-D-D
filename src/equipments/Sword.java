@@ -1,6 +1,7 @@
 package equipments;
 
 import characters.Character;
+import characters.Warrior;
 import characters.Wizard;
 
 public class Sword extends Weapons {
@@ -15,16 +16,16 @@ public class Sword extends Weapons {
             System.out.println('\n' + "... Mais vous êtes un magicien, les armes c'est pour les barbares!");
         } else {
             if (player.getAttack() < player.getAttackMax()) {
-                System.out.println("Vous vous équipez de la " + getName() + "." + '\n');
-                player.setAttack(player.getAttack());
-                player.setAttack(player.getAttack() + getPower());
-                if (player.getAttack() > player.getAttackMax()) {
+                if (!((Warrior) player).hasSword()) {
+                    System.out.println('\n' + "Vous vous équipez de l'arme.");
+                    System.out.println("Vos dégats augmentent de " + (player.getAttackMax() - player.getAttack()) + " et passent à " + player.getAttackMax() + ".");
                     player.setAttack(player.getAttackMax());
+                } else {
+                    System.out.println('\n' + "... Mais vous possédez déjà une " + getName() + "!");
+                    ((Warrior) player).setHasSword(true);
                 }
-                System.out.println("Vos dégats augmentent de " + getPower() + " et passent à " + player.getAttack() + ".");
-
             } else {
-                System.out.println("... Mais vous avez déjà atteint votre maximum de puissance d'attaque!");
+                System.out.println('\n' + "... Mais vous avez déjà atteint votre maximum de puissance d'attaque!");
             }
         }
     }

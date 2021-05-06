@@ -2,6 +2,7 @@ package equipments;
 
 import characters.Character;
 import characters.Warrior;
+import characters.Wizard;
 
 public class Fireball extends Weapons {
 
@@ -15,15 +16,15 @@ public class Fireball extends Weapons {
             System.out.println('\n' + "... Mais vous êtes un barbare... Vous ne comprenez rien à la magie!");
         } else {
             if (player.getAttack() < player.getAttackMax()) {
-                System.out.println('\n' + "Vous lisez attentivement le livre de " + getName() + "...");
-                System.out.println("... Vous avez appris le " + getName() + "!" + '\n');
-                player.setAttack(player.getAttack());
-                player.setAttack(player.getAttack() + getPower());
-
-                if (player.getAttack() > player.getAttackMax()) {
+                if (!((Wizard) player).hasFireBall()) {
+                    System.out.println('\n' + "Vous lisez attentivement le livre de " + getName() + "...");
+                    System.out.println("... Vous avez appris le " + getName() + "!" + '\n');
+                    System.out.println("Vos dégats augmentent de " + (player.getAttackMax() - player.getAttack()) + " et passent à " + player.getAttackMax() + ".");
                     player.setAttack(player.getAttackMax());
+                } else {
+                    System.out.println('\n' + "... Mais vous possédez déjà le " + getName() + "!");
+                    ((Wizard) player).setHasFireBall(true);
                 }
-                System.out.println("Vos dégats augmentent de " + getPower() + " et passent à " + player.getAttack() + ".");
             } else {
                 System.out.println("... Mais vous avez déjà atteint votre maximum de puissance d'attaque!");
             }

@@ -5,7 +5,6 @@ import java.util.Scanner;
 import characters.*;
 import characters.Character;
 
-
 public class Menu {
     private Character player;
     private final Scanner keyboard;
@@ -26,7 +25,7 @@ public class Menu {
                 text.nameChoice();
                 String playerName = keyboard.next();
                 if (playerName.equals("q")) {
-                    text.exitGame();
+                    System.exit(0);
                 }
                 System.out.println("");
                 System.out.println("Votre personnage s'appelera " + playerName + ", êtes-vous sûr(e) de votre choix?");
@@ -48,7 +47,7 @@ public class Menu {
                         break;
                     }
                     case "q": {
-                        text.exitGame();
+                        System.exit(0);
                     }
                 }
                 choice = false;
@@ -56,7 +55,7 @@ public class Menu {
                 text.nameChoice();
                 String playerName = keyboard.next();
                 if (playerName.equals("q")) {
-                    text.exitGame();
+                    System.exit(0);
                 }
                 System.out.println("Votre personnage s'appelera " + playerName + ", êtes-vous sûr(e) de votre choix?");
                 text.checkName();
@@ -77,12 +76,12 @@ public class Menu {
                         break;
                     }
                     case "q": {
-                        text.exitGame();
+                        System.exit(0);
                     }
                 }
                 choice = false;
             } else if (playerCharacter == 3) {
-                text.exitGame();
+                System.exit(0);
             } else {
                 System.out.println("Veuillez taper 1,2 ou 3 et pas autre chose!!");
             }

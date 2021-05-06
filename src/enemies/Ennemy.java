@@ -2,6 +2,7 @@ package enemies;
 
 import characters.Character;
 import game.*;
+import menu.MenuText;
 
 public class Ennemy extends Cell {
 
@@ -26,24 +27,26 @@ public class Ennemy extends Cell {
     @Override
     public void interaction(Character player) {
         while (getHp() > 0 && player.getHp() > 0) {
-            System.out.println("____________________________________________________________________________________________________________");
-            System.out.println('\n' + "Vous attaquez le " + getName() + " et lui infligez " + player.getAttack() + " points de dégats" + '\n');
+            MenuText text = new MenuText();
+            System.out.println("_______________________________________________________");
+            System.out.println("Vous attaquez le " + getName() + " et lui infligez " + player.getAttack() + " points de dégats");
             setHp(getHp() - player.getAttack());
             if (getHp() > 0) {
-                System.out.println("L'ennemi a encore " + getHp() + " points de vie." + '\n');
-                System.out.println("--------------------------------------------------------------------------------------------------------");
-                System.out.println("________________________________________________________________________________________________________");
-                System.out.println("Le " + getName() + " vous attaque et vous inflige " + getAttack() + " points de dégats" + '\n');
+                System.out.println("L'ennemi a encore " + getHp() + " points de vie.");
+                System.out.println("----------------------------------------------------");
+                System.out.println("Le " + getName() + " vous attaque et vous inflige " + getAttack() + " points de dégats");
                 player.setHp(player.getHp() - getAttack());
                 if (player.getHp() <= 0) {
-                    System.out.println("Perdu! Vous êtes mort...");
+                    System.out.println('\n' + "Le " + getName() + " vous porte un coup fatal...");
+                    System.out.println("...vous mourrez dans d'atroces souffrances.");
+                    text.youLose();
                 } else {
-                    System.out.println("Il vous reste " + player.getHp() + " points de vie." + '\n');
-                    System.out.println("----------------------------------------------------------------------------------------------------");
+                    System.out.println("Il vous reste " + player.getHp() + " points de vie.");
                 }
             } else if (getHp() <= 0) {
-                System.out.println("Vous avez vaincu le " + getName() + "!" + '\n');
-                System.out.println("________________________________________________________________________________________________________");
+                System.out.println("Vous avez vaincu le " + getName() + "!");
+                System.out.println("----------------------------------------------------");
+
             }
         }
     }

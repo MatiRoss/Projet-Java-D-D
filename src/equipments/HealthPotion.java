@@ -15,18 +15,17 @@ public class HealthPotion extends Cell {
     @Override
     public void interaction(Character player) {
         if (player.getHp() < player.getHpMax()) {
-            System.out.println("Vous buvez la potion... Glouglou... hips!" + '\n');
+            System.out.println('\n' + "Vous buvez la potion... Glouglou... hips!");
             System.out.println("________________________________________________________________________________________________________");
             System.out.println("Vos points de vie augmentent de " + getHealth() + "!");
             player.setHp(player.getHp() + getHealth());
-
             if (player.getHp() > player.getHpMax()) {
                 player.setHp(player.getHpMax());
             }
             System.out.println("Vous avez désormais " + player.getHp() + " points de vie.");
             System.out.println("----------------------------------------------------------------------------------------------------");
         } else {
-            System.out.println("... Mais vous avez déjà atteint votre maximum de points de vie!");
+            System.out.println('\n' + "... Mais vous avez déjà atteint votre maximum de points de vie!");
         }
     }
 

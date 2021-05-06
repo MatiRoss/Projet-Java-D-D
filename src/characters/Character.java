@@ -5,8 +5,10 @@ public abstract class Character {
     private String name;
     private String picture;
     private int hp;
-    private int attack;
+    private int hpMin;
     private int hpMax;
+    private int attack;
+    private int attackMin;
     private int attackMax;
 
     public Character() {
@@ -17,11 +19,13 @@ public abstract class Character {
         this.name = name;
     }
 
-    public Character(String name, int hp, int attack, int hpMax, int attackMax) {
+    public Character(String name, int hp, int hpMin, int hpMax, int attack, int attackMin, int attackMax) {
         this.name = name;
         this.hp = hp;
-        this.attack = attack;
+        this.hpMin = hpMin;
         this.hpMax = hpMax;
+        this.attack = attack;
+        this.attackMin = attackMin;
         this.attackMax = attackMax;
     }
 
@@ -55,6 +59,14 @@ public abstract class Character {
 
     public int getAttackMax() {
         return attackMax;
+    }
+
+    public int getHpMin() {
+        return hpMin;
+    }
+
+    public int getAttackMin() {
+        return attackMin;
     }
 
     public String descriptionWarrior() {

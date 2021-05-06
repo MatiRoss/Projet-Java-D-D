@@ -7,77 +7,81 @@ import game.*;
 import java.util.ArrayList;
 
 public class Board {
-
     private int playerPosition;
     private ArrayList<Cell> board;
+
+    private int nbGobelins;
+    private int nbSorcerers;
+    private int nbDragons;
+    private int nbClubs;
+    private int nbSwords;
+    private int nbThunderstrike;
+    private int nbFireBalls;
+    private int nbHealthPotions;
+    private int nbBigHealthPotions;
+
+    private String difficulty;
 
     public Board() {
         board = new ArrayList<Cell>();
 
-        board.add(new Thunderstrike());
-        board.add(new Club());
-        board.add(new EmptyCell());
-        board.add(new Gobelin());
-        board.add(new Thunderstrike());
-        board.add(new Club());
-        board.add(new Gobelin());
-        board.add(new HealthPotion());
-        board.add(new Gobelin());
-        board.add(new Gobelin());
-        board.add(new Sorcerer());
-        board.add(new Club());
-        board.add(new Gobelin());
-        board.add(new HealthPotion());
-        board.add(new Gobelin());
-        board.add(new Gobelin());
-        board.add(new Thunderstrike());
-        board.add(new EmptyCell());
-        board.add(new Gobelin());
-        board.add(new Sword());
-        board.add(new Sorcerer());
-        board.add(new Gobelin());
-        board.add(new Club());
-        board.add(new Thunderstrike());
-        board.add(new Gobelin());
-        board.add(new Sorcerer());
-        board.add(new Sword());
-        board.add(new Gobelin());
-        board.add(new BigHealthPotion());
-        board.add(new EmptyCell());
-        board.add(new Gobelin());
-        board.add(new HealthPotion());
-        board.add(new Sorcerer());
-        board.add(new HealthPotion());
-        board.add(new EmptyCell());
-        board.add(new Sorcerer());
-        board.add(new Sorcerer());
-        board.add(new Sorcerer());
-        board.add(new Club());
-        board.add(new HealthPotion());
-        board.add(new Sorcerer());
-        board.add(new BigHealthPotion());
-        board.add(new Sword());
-        board.add(new HealthPotion());
-        board.add(new Sorcerer());
-        board.add(new Dragon());
-        board.add(new EmptyCell());
-        board.add(new Sorcerer());
-        board.add(new Fireball());
-        board.add(new Fireball());
-        board.add(new EmptyCell());
-        board.add(new EmptyCell());
-        board.add(new Dragon());
-        board.add(new Sword());
-        board.add(new EmptyCell());
-        board.add(new EmptyCell());
-        board.add(new Dragon());
-        board.add(new EmptyCell());
-        board.add(new EmptyCell());
-        board.add(new Shield());
-        board.add(new Philter());
-        board.add(new Shield());
-        board.add(new Dragon());
-        board.add(new EmptyCell());
+        this.nbGobelins = 10;
+        this.nbSorcerers = 10;
+        this.nbDragons = 4;
+        this.nbClubs = 5;
+        this.nbSwords = 4;
+        this.nbThunderstrike = 5;
+        this.nbFireBalls = 2;
+        this.nbHealthPotions = 6;
+        this.nbBigHealthPotions = 2;
+
+        generateBoard();
+    }
+
+    public Board(String difficulty) {
+        board = new ArrayList<Cell>();
+
+        this.nbGobelins = 15;
+        this.nbSorcerers = 15;
+        this.nbDragons = 8;
+        this.nbClubs = 5;
+        this.nbSwords = 4;
+        this.nbThunderstrike = 5;
+        this.nbFireBalls = 2;
+        this.nbHealthPotions = 6;
+        this.nbBigHealthPotions = 2;
+
+        generateBoard();
+    }
+
+    public void generateBoard() {
+        for (int i = 0; i < nbGobelins; i++) {
+            board.add(new Gobelin());
+        }
+        for (int i = 0; i < nbSorcerers; i++) {
+            board.add(new Sorcerer());
+        }
+        for (int i = 0; i < nbDragons; i++) {
+            board.add(new Dragon());
+        }
+        for (int i = 0; i < nbClubs; i++) {
+            board.add(new Club());
+        }
+        for (int i = 0; i < nbSwords; i++) {
+            board.add(new Sword());
+        }
+        for (int i = 0; i < nbThunderstrike; i++) {
+            board.add(new Thunderstrike());
+        }
+        for (int i = 0; i < nbFireBalls; i++) {
+            board.add(new Fireball());
+        }
+        for (int i = 0; i < nbHealthPotions; i++) {
+            board.add(new HealthPotion());
+        }
+        for (int i = 0; i < nbBigHealthPotions; i++) {
+            board.add(new BigHealthPotion());
+        }
     }
 
     public ArrayList<Cell> getBoard() {

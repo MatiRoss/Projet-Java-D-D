@@ -8,7 +8,7 @@ public class EmptyCell extends Cell {
     }
 
     @Override
-    public void interaction(Character player) {
+    public void interaction(Character player, Cell cell) {
 
     }
 

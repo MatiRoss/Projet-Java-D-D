@@ -7,7 +7,7 @@ public abstract class Cell {
     public Cell() {
     }
 
-    public abstract void interaction(Character player);
+    public abstract void interaction(Character player, Cell cell);
 
 }
 

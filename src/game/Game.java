@@ -1,6 +1,8 @@
 package game;
 
 import characters.Character;
+import enemies.Ennemy;
+import enemies.Rat;
 import menu.*;
 import gameBoard.Board;
 import tools.Timer;
@@ -23,32 +25,41 @@ public class Game {
         this.player = player;
         keyboard = new Scanner(System.in);
         text = new MenuText();
-        board = new Board("hard");
-        Collections.shuffle(board.getBoard(), new Random());
+        board = new Board();
+        Collections.shuffle(board.getBoard());
     }
 
     public void playGame() throws Exception {
 
         while (board.getPlayerPosition() < board.getBoard().size() && player.getHp() > 0) {
             try {
-                timer.waitSec(5, true, true);
+                timer.waitSec(1, true, true);
                 text.rollDice();
                 int diceValue = player.throwDice();
                 String lanceDe = keyboard.next();
                 if (lanceDe.equals("o")) {
-                    board.setPlayerPosition(board.getPlayerPosition() + diceValue);
+                    Cell cell = board.getBoard().get(board.getPlayerPosition());
                     System.out.println(" ---------------------------------------------------");
                     System.out.println("        Vous lancez le dé et faites un... " + diceValue + " !");
+                    board.setPlayerPosition(board.getPlayerPosition() + diceValue);
                     if (board.getPlayerPosition() < board.getBoard().size()) {
                         System.out.println("        Vous avancez jusqu'à la case " + board.getPlayerPosition() + ".");
                         System.out.println(" ---------------------------------------------------");
-                        System.out.println(player.getName() + " ==>  PV : " + player.getHp() + " ATK : " + player.getAttack());
+                        System.out.println(cell.toString());
                         System.out.println(" ---------------------------------------------------");
-                        System.out.println(board.getBoard().get(board.getPlayerPosition()).toString());
-
-                        Cell cell = board.getBoard().get(board.getPlayerPosition());
-                        cell.interaction(player);
-
+                        if (cell instanceof Ennemy) {
+                            System.out.println(player.showStats());
+                            System.out.println(((Ennemy) cell).showStats());
+                            text.FightOrFlee();
+                            int fightChoice = keyboard.nextInt();
+                            if (fightChoice == 1) {
+                                fight(cell, diceValue);
+                            } else {
+                                flee();
+                            }
+                        } else {
+                            cell.interaction(player, cell);
+                        }
                     } else if (board.getPlayerPosition() > board.getBoard().size()) {
                         throw new CharacterOutOfBoard();
                     }
@@ -93,6 +104,37 @@ public class Game {
             startNewGame();
         } else {
             exitGame();
+        }
+    }
+
+    public void fight(Cell cell, int diceValue) {
+        ((Ennemy) cell).setDead(false);
+        cell.interaction(player, cell);
+        if (((Ennemy) cell).isDead()) {
+            board.getBoard().set((board.getPlayerPosition() - diceValue), new Rat());
+        }
+    }
+
+    public void flee() {
+        int diceValue2 = player.throwDice();
+        int newPosition = board.getPlayerPosition() - diceValue2;
+        board.setPlayerPosition(newPosition);
+        Cell newCell = board.getBoard().get(newPosition);
+        System.out.println("Vous fuyez lâchement... Votre couardise vous ramène à la case " + newPosition + ".");
+        System.out.println(" ---------------------------------------------------");
+        System.out.println(newCell.toString());
+        System.out.println(" ---------------------------------------------------");
+
+        if (newCell instanceof Ennemy) {
+            ((Ennemy) newCell).setDead(false);
+            System.out.println(player.showStats());
+            System.out.println(((Ennemy) newCell).showStats());
+            newCell.interaction(player, newCell);
+            if (((Ennemy) newCell).isDead()) {
+                board.getBoard().set((newPosition), new Rat());
+            }
+        } else {
+            newCell.interaction(player, newCell);
         }
     }
 

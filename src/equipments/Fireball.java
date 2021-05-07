@@ -3,6 +3,7 @@ package equipments;
 import characters.Character;
 import characters.Warrior;
 import characters.Wizard;
+import game.Cell;
 
 public class Fireball extends Weapons {
 
@@ -11,18 +12,22 @@ public class Fireball extends Weapons {
     }
 
     @Override
-    public void interaction(Character player) {
+    public void interaction(Character player, Cell cell) {
         if (player instanceof Warrior) {
-            System.out.println('\n' + "... Mais vous êtes un barbare... Vous ne comprenez rien à la magie!");
+            System.out.println("... Mais vous êtes un barbare... Vous ne comprenez rien à la magie!");
+            System.out.println(" ---------------------------------------------------");
         } else {
             if (player.getAttack() < player.getAttackMax()) {
                 if (!((Wizard) player).hasFireBall()) {
-                    System.out.println('\n' + "Vous lisez attentivement le livre de " + getName() + "...");
-                    System.out.println("... Vous avez appris le " + getName() + "!" + '\n');
+                    System.out.println("Vous lisez attentivement le livre de " + getName() + "...");
+                    System.out.println("... Vous avez appris le " + getName() + "!");
+                    System.out.println(" ---------------------------------------------------");
                     System.out.println("Vos dégats augmentent de " + (player.getAttackMax() - player.getAttack()) + " et passent à " + player.getAttackMax() + ".");
+                    System.out.println(" ---------------------------------------------------");
                     player.setAttack(player.getAttackMax());
                 } else {
-                    System.out.println('\n' + "... Mais vous possédez déjà le " + getName() + "!");
+                    System.out.println("... Mais vous possédez déjà le " + getName() + "!");
+                    System.out.println(" ---------------------------------------------------");
                     ((Wizard) player).setHasFireBall(true);
                 }
             } else {

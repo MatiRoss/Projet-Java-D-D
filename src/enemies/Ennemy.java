@@ -10,6 +10,7 @@ public class Ennemy extends Cell {
     private String picture;
     private int hp;
     private int attack;
+    private boolean isDead;
 
     public Ennemy() {
     }
@@ -18,15 +19,17 @@ public class Ennemy extends Cell {
         this.name = name;
     }
 
-    public Ennemy(String name, int hp, int attack) {
+    public Ennemy(String name, int hp, int attack, boolean isDead) {
         this.name = name;
         this.hp = hp;
         this.attack = attack;
+        this.isDead = isDead;
     }
 
     @Override
-    public void interaction(Character player) {
+    public void interaction(Character player, Cell cell) {
         while (getHp() > 0 && player.getHp() > 0) {
+            setDead(false);
             MenuText text = new MenuText();
             System.out.println("_______________________________________________________");
             System.out.println("Vous attaquez le " + getName() + " et lui infligez " + player.getAttack() + " points de dégats");
@@ -44,9 +47,9 @@ public class Ennemy extends Cell {
                     System.out.println("Il vous reste " + player.getHp() + " points de vie.");
                 }
             } else if (getHp() <= 0) {
+                setDead(true);
                 System.out.println("Vous avez vaincu le " + getName() + "!");
                 System.out.println("----------------------------------------------------");
-
             }
         }
     }
@@ -75,8 +78,22 @@ public class Ennemy extends Cell {
         return attack;
     }
 
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public void setDead(boolean dead) {
+        isDead = dead;
+    }
+
+    public String showStats() {
+        return getName() + " ==>  PV : " + getHp() + " ATK : " + getAttack();
+    }
+
     @Override
     public String toString() {
         return "Vous tombez sur un " + name + ", il a " + hp + " points de vie et " + attack + " d'attaque.";
     }
+
+
 }

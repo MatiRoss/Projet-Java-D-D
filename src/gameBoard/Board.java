@@ -19,6 +19,9 @@ public class Board {
     private int nbFireBalls;
     private int nbHealthPotions;
     private int nbBigHealthPotions;
+    private int nbEmptyCells;
+    private int nbGobelinKings;
+    private int nbShields;
 
     private String difficulty;
 
@@ -34,11 +37,16 @@ public class Board {
         this.nbFireBalls = 2;
         this.nbHealthPotions = 6;
         this.nbBigHealthPotions = 2;
+        this.nbEmptyCells = 4;
+        this.nbGobelinKings = 2;
+        this.nbShields = 10;
 
         generateBoard();
     }
 
     public Board(String difficulty) {
+
+        this.difficulty = difficulty;
         board = new ArrayList<Cell>();
 
         this.nbGobelins = 15;
@@ -52,6 +60,7 @@ public class Board {
         this.nbBigHealthPotions = 2;
 
         generateBoard();
+
     }
 
     public void generateBoard() {
@@ -81,6 +90,15 @@ public class Board {
         }
         for (int i = 0; i < nbBigHealthPotions; i++) {
             board.add(new BigHealthPotion());
+        }
+        for (int i = 0; i < nbEmptyCells; i++) {
+            board.add(new EmptyCell());
+        }
+        for (int i = 0; i < nbGobelinKings; i++) {
+            board.add(new GobelinKing());
+        }
+        for (int i = 0; i < nbShields; i++) {
+            board.add(new Shield());
         }
     }
 

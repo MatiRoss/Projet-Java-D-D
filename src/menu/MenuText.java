@@ -53,11 +53,16 @@ public class MenuText {
     }
 
     public void rollDice() {
-        System.out.println("");
-        System.out.println("-------------------------");
-        System.out.println("Voulez-vous lancer le dé?              OUI ('o')         NON ('n')");
-        System.out.println("-------------------------");
+        System.out.println("----------------------------------------------------");
+        System.out.println("Lancer le dé?           OUI ('o')          NON ('n')");
+        System.out.println("----------------------------------------------------");
 
+    }
+
+    public void FightOrFlee() {
+        System.out.println("----------------------------------------------------");
+        System.out.println("         [1] Attaquer              [2] Fuir");
+        System.out.println("----------------------------------------------------");
     }
 
     public void youWin() {

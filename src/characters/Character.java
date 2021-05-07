@@ -70,19 +70,23 @@ public abstract class Character {
     }
 
     public String descriptionWarrior() {
-        return "Votre personnage s'appelle " + this.name + " c'est un brave et fier guerrier, il a " + this.hp + " points de vie et "
-                + this.attack + " d'attaque ";
+        return "Votre personnage s'appelle " + this.name + ", c'est un(e) brave et fier(e) guerrier(e), il/elle a " + this.hp + " points de vie et "
+                + this.attack + " d'attaque. ";
     }
 
     public String descriptionWizard() {
-        return "Votre personnage s'appelle " + this.name + " c'est une redoutable magicienne, elle a " + this.hp + " points de vie et "
-                + this.attack + " d'attaque ";
+        return "Votre personnage s'appelle " + this.name + ", c'est un(e) redoutable magicien(ne), il/elle a " + this.hp + " points de vie et "
+                + this.attack + " d'attaque. ";
     }
 
     public int throwDice() {
         int dice = 0;
         dice = (int) (Math.random() * 6 + 1);
         return dice;
+    }
+
+    public String showStats() {
+        return getName() + " ==>  PV : " + getHp() + " ATK : " + getAttack();
     }
 
     @Override

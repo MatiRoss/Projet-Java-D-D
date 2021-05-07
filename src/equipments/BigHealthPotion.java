@@ -13,21 +13,23 @@ public class BigHealthPotion extends Cell {
     }
 
     @Override
-    public void interaction(Character player) {
+    public void interaction(Character player, Cell cell) {
         if (player.getHp() < player.getHpMax()) {
-            System.out.println('\n' + "Vous buvez la potion... Glouglou... hips!");
-            System.out.println("________________________________________________________________________________________________________");
+            System.out.println("Vous buvez la potion... Glouglou... hips!");
             if (player.getHp() >= player.getHpMin()) {
                 System.out.println("Vos points de vie augmentent de " + (player.getHpMax() - player.getHp()) + "!");
+                System.out.println("----------------------------------------------------");
                 player.setHp(player.getHpMax());
             } else {
                 System.out.println("Vos points de vie augmentent de " + getHealth() + "!");
+                System.out.println("----------------------------------------------------");
                 player.setHp(player.getHp() + getHealth());
             }
             System.out.println("Vous avez désormais " + player.getHp() + " points de vie.");
-            System.out.println("----------------------------------------------------------------------------------------------------");
+            System.out.println("----------------------------------------------------");
         } else {
-            System.out.println('\n' + "... Mais vous avez déjà atteint votre maximum de points de vie!");
+            System.out.println("... Mais vous avez déjà atteint votre maximum de points de vie!");
+            System.out.println(" ---------------------------------------------------");
         }
     }
 
@@ -45,6 +47,6 @@ public class BigHealthPotion extends Cell {
 
     @Override
     public String toString() {
-        return "Vous tombez sur un coffre. Vous l'ouvrez..." + '\n' + "Wow quelle chance! Vous avez trouvé une " + name + " ! Elle rend " + health + " points de vie.";
+        return "Vous tombez sur un coffre. Vous l'ouvrez..." + '\n' + "Wow quelle chance! Vous avez trouvé une " + name + "! Elle rend " + health + " points de vie.";
     }
 }

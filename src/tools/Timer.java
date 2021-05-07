@@ -9,7 +9,7 @@ public class Timer {
         {
             System.out.println();
             if (loading) {
-                System.out.print("Loading ");
+                System.out.print("Chargement ");
             }
             for (int i = 0; i < second; i++) {
                 Thread.sleep(1000);

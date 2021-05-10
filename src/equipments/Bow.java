@@ -5,11 +5,12 @@ import characters.Warrior;
 import characters.Wizard;
 import game.Cell;
 
-public class Club extends Weapons {
+public class Bow extends Weapons {
 
-    public Club() {
-        super("Massue", 3);
+    public Bow() {
+        super("Arc", 4);
     }
+
 
     @Override
     public void interaction(Character player, Cell cell) {
@@ -17,14 +18,13 @@ public class Club extends Weapons {
             System.out.println("... Mais vous êtes un magicien, les armes c'est pour les barbares!");
             System.out.println(" ---------------------------------------------------");
         } else {
-            player.addToInventory(player, cell);
             if (player.getAttack() < player.getAttackMax()) {
-                if (!((Warrior) player).hasClub()) {
+                if (!((Warrior) player).hasBow()) {
                     System.out.println("Vous vous équipez de l'arme.");
                     player.setAttack(player.getAttackMin() + getPower());
                     System.out.println("Vos dégats augmentent de " + getPower() + " et passent à " + player.getAttack() + ".");
                     System.out.println(" ---------------------------------------------------");
-                    ((Warrior) player).setHasClub(true);
+                    ((Warrior) player).setHasBow(true);
                 } else {
                     System.out.println("... Mais vous possédez déjà une " + getName() + "!");
                     System.out.println(" ---------------------------------------------------");
@@ -36,3 +36,4 @@ public class Club extends Weapons {
         }
     }
 }
+

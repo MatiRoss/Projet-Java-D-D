@@ -3,7 +3,6 @@ package gameBoard;
 import enemies.*;
 import equipments.*;
 import game.*;
-
 import java.util.ArrayList;
 
 public class Board {

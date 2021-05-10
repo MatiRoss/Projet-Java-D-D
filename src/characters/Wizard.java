@@ -6,7 +6,7 @@ public class Wizard extends Character {
     private boolean hasFireBall;
 
     public Wizard(String name) {
-        super(name, 3, 3, 6, 8, 8, 15);
+        super(name, 3, 3, 6, 8, 8, 15, null);
         this.hasThunderstrike = false;
         this.hasFireBall = false;
     }

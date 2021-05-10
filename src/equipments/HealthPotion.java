@@ -3,6 +3,8 @@ package equipments;
 import characters.Character;
 import game.Cell;
 
+import java.util.Arrays;
+
 public class HealthPotion extends Cell {
     String name;
     int health;
@@ -14,6 +16,8 @@ public class HealthPotion extends Cell {
 
     @Override
     public void interaction(Character player, Cell cell) {
+        player.addToInventory(player, cell);
+        System.out.println(Arrays.toString(player.getInventory()));
         if (player.getHp() < player.getHpMax()) {
             System.out.println("Vous buvez la potion... Glouglou... hips!");
             System.out.println("Vos points de vie augmentent de " + getHealth() + "!");
@@ -44,6 +48,10 @@ public class HealthPotion extends Cell {
 
     @Override
     public String toString() {
+        return name + "(+" + health + " PV)" + '\n';
+    }
+
+    public String eventDescription() {
         return "Vous tombez sur un coffre. Vous l'ouvrez..." + '\n' + "Wow quelle chance! Vous avez trouvé une " + name + "! Elle rend " + health + " points de vie.";
     }
 }

@@ -14,6 +14,7 @@ public class BigHealthPotion extends Cell {
 
     @Override
     public void interaction(Character player, Cell cell) {
+        player.addToInventory(player, cell);
         if (player.getHp() < player.getHpMax()) {
             System.out.println("Vous buvez la potion... Glouglou... hips!");
             if (player.getHp() >= player.getHpMin()) {
@@ -47,6 +48,10 @@ public class BigHealthPotion extends Cell {
 
     @Override
     public String toString() {
+        return name + "(+" + health + " PV)" + '\n';
+    }
+
+    public String eventDescription() {
         return "Vous tombez sur un coffre. Vous l'ouvrez..." + '\n' + "Wow quelle chance! Vous avez trouvé une " + name + "! Elle rend " + health + " points de vie.";
     }
 }

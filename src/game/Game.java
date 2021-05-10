@@ -1,14 +1,15 @@
 package game;
 
 import characters.Character;
+import characters.Inventory;
 import enemies.Ennemy;
 import enemies.Rat;
 import menu.*;
 import gameBoard.Board;
 import tools.Timer;
 
+import java.util.Arrays;
 import java.util.Collections;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
@@ -45,17 +46,21 @@ public class Game {
                     if (board.getPlayerPosition() < board.getBoard().size()) {
                         System.out.println("        Vous avancez jusqu'à la case " + board.getPlayerPosition() + ".");
                         System.out.println(" ---------------------------------------------------");
-                        System.out.println(cell.toString());
+                        System.out.println(cell.eventDescription());
                         System.out.println(" ---------------------------------------------------");
                         if (cell instanceof Ennemy) {
                             System.out.println(player.showStats());
                             System.out.println(((Ennemy) cell).showStats());
                             text.FightOrFlee();
                             int fightChoice = keyboard.nextInt();
-                            if (fightChoice == 1) {
-                                fight(cell, diceValue);
-                            } else {
-                                flee();
+                            switch (fightChoice) {
+                                case 1:
+                                    fight(cell, diceValue);
+                                case 2:
+                                    flee();
+                                case 3:
+                                    player.displayInventory(player);
+                                    text.FightOrFlee();
                             }
                         } else {
                             cell.interaction(player, cell);
@@ -122,7 +127,7 @@ public class Game {
         Cell newCell = board.getBoard().get(newPosition);
         System.out.println("Vous fuyez lâchement... Votre couardise vous ramène à la case " + newPosition + ".");
         System.out.println(" ---------------------------------------------------");
-        System.out.println(newCell.toString());
+        System.out.println(newCell.eventDescription());
         System.out.println(" ---------------------------------------------------");
 
         if (newCell instanceof Ennemy) {

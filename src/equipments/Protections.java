@@ -36,6 +36,10 @@ public abstract class Protections extends Cell {
 
     @Override
     public String toString() {
+        return getName() + "(+" + getDefense() + " DEF)" + '\n';
+    }
+
+    public String eventDescription() {
         return "Vous tombez sur un coffre. Vous l'ouvrez..." + '\n' + "Wow quelle chance, vous avez trouvé un " + name + "! Il bloque " + defense + " points de dégats.";
     }
 }

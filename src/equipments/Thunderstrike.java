@@ -17,6 +17,7 @@ public class Thunderstrike extends Weapons {
             System.out.println("... Mais vous êtes un barbare... Vous ne comprenez rien à la magie!");
             System.out.println(" ---------------------------------------------------");
         } else {
+            player.addToInventory(player, cell);
             if (player.getAttack() < player.getAttackMax()) {
                 if (!((Wizard) player).hasThunderstrike()) {
                     System.out.println("Vous lisez attentivement le livre de " + getName() + "...");

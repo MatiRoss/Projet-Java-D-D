@@ -17,6 +17,7 @@ public class Sword extends Weapons {
             System.out.println("... Mais vous êtes un magicien, les armes c'est pour les barbares!");
             System.out.println(" ---------------------------------------------------");
         } else {
+            player.addToInventory(player, cell);
             if (player.getAttack() < player.getAttackMax()) {
                 if (!((Warrior) player).hasSword()) {
                     System.out.println("Vous vous équipez de l'arme.");
@@ -34,4 +35,5 @@ public class Sword extends Weapons {
             }
         }
     }
+
 }

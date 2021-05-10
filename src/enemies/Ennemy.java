@@ -1,6 +1,7 @@
 package enemies;
 
 import characters.Character;
+import characters.Warrior;
 import game.*;
 import menu.MenuText;
 
@@ -37,6 +38,9 @@ public class Ennemy extends Cell {
             if (getHp() > 0) {
                 System.out.println("L'ennemi a encore " + getHp() + " points de vie.");
                 System.out.println("----------------------------------------------------");
+                if (player instanceof Warrior) {
+
+                }
                 System.out.println("Le " + getName() + " vous attaque et vous inflige " + getAttack() + " points de dégats");
                 player.setHp(player.getHp() - getAttack());
                 if (player.getHp() <= 0) {
@@ -95,5 +99,8 @@ public class Ennemy extends Cell {
         return "Vous tombez sur un " + name + ", il a " + hp + " points de vie et " + attack + " d'attaque.";
     }
 
-
+    @Override
+    public String eventDescription() {
+        return "Vous tombez sur un " + name + ", il a " + hp + " points de vie et " + attack + " d'attaque.";
+    }
 }

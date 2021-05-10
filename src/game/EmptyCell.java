@@ -9,7 +9,11 @@ public class EmptyCell extends Cell {
 
     @Override
     public void interaction(Character player, Cell cell) {
+    }
 
+    @Override
+    public String eventDescription() {
+        return "Vous tombez sur une case vide. Un peu de répit pour vous.";
     }
 
     @Override

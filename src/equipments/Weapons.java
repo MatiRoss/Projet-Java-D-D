@@ -37,6 +37,10 @@ public abstract class Weapons extends Cell {
 
     @Override
     public String toString() {
+        return name + "(+" + power + " ATK)" + '\n';
+    }
+
+    public String eventDescription() {
         return "Vous tombez sur un coffre. Vous l'ouvrez..." + '\n' + "Wow quelle chance, vous avez trouvé un(e) " + name + "! (+" + power + " d'attaque)";
     }
 }

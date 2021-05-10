@@ -9,5 +9,7 @@ public abstract class Cell {
 
     public abstract void interaction(Character player, Cell cell);
 
+    public abstract String eventDescription();
+
 }
 

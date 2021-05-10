@@ -61,7 +61,7 @@ public class MenuText {
 
     public void FightOrFlee() {
         System.out.println("----------------------------------------------------");
-        System.out.println("         [1] Attaquer              [2] Fuir");
+        System.out.println("[1] Attaquer         [2] Fuir         [3] Inventaire");
         System.out.println("----------------------------------------------------");
     }
 

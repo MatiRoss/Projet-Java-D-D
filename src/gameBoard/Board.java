@@ -26,6 +26,7 @@ public class Board {
 
     public Board() {
         board = new ArrayList<Cell>();
+        this.playerPosition = 0;
 
         this.nbGobelins = 10;
         this.nbSorcerers = 10;
@@ -47,6 +48,7 @@ public class Board {
 
         this.difficulty = difficulty;
         board = new ArrayList<Cell>();
+        this.playerPosition = 0;
 
         this.nbGobelins = 15;
         this.nbSorcerers = 15;

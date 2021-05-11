@@ -49,20 +49,38 @@ public class Game {
                         System.out.println(cell.eventDescription());
                         System.out.println(" ---------------------------------------------------");
                         if (cell instanceof Ennemy) {
-                            System.out.println(player.showStats());
+                            System.out.println(player.showStats(player));
                             System.out.println(((Ennemy) cell).showStats());
                             text.FightOrFlee();
-                            int fightChoice = keyboard.nextInt();
-                            switch (fightChoice) {
-                                case 1:
-                                    fight(cell, diceValue);
-                                case 2:
-                                    flee();
-                                case 3:
-                                    player.displayInventory(player);
-                                    text.FightOrFlee();
+                            boolean ennemyChoice = true;
+                            while (ennemyChoice) {
+                                int fightChoice = keyboard.nextInt();
+                                switch (fightChoice) {
+                                    case 1:
+                                        System.out.println(player.showStats(player));
+                                        ennemyChoice = false;
+                                        fight(cell, diceValue);
+                                        break;
+                                    case 2:
+                                        System.out.println(player.showStats(player));
+                                        ennemyChoice = false;
+                                        flee();
+                                        break;
+                                    case 3:
+                                        player.displayInventory(player);
+                                        player.useItem(player);
+                                }
                             }
                         } else {
+                      /*     text.displayInventory();
+                            String displayIventory = keyboard.next();
+                           if (displayIventory.equals("i")) {
+                                player.displayInventory(player);
+                                player.useItem(player);
+                            }else {
+
+                            }
+                           */
                             cell.interaction(player, cell);
                         }
                     } else if (board.getPlayerPosition() > board.getBoard().size()) {
@@ -132,7 +150,7 @@ public class Game {
 
         if (newCell instanceof Ennemy) {
             ((Ennemy) newCell).setDead(false);
-            System.out.println(player.showStats());
+            System.out.println(player.showStats(player));
             System.out.println(((Ennemy) newCell).showStats());
             newCell.interaction(player, newCell);
             if (((Ennemy) newCell).isDead()) {

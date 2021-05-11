@@ -91,7 +91,7 @@ public class Ennemy extends Cell {
     }
 
     public String showStats() {
-        return getName() + " ==>  PV : " + getHp() + " ATK : " + getAttack();
+        return getName() + " ==>  PV : " + getHp() + " || ATK : " + getAttack();
     }
 
     @Override

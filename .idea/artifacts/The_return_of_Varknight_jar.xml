@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="The return of Varknight:jar">
+    <output-path>$PROJECT_DIR$/classes/artifacts/The_return_of_Varknight_jar</output-path>
+    <root id="archive" name="The return of Varknight.jar">
+      <element id="module-output" name="The return of Varknight" />
+    </root>
+  </artifact>
+</component>

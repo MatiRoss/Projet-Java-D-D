@@ -45,27 +45,43 @@ public class MenuText {
         System.out.println("");
     }
 
+    public void displayInventory() {
+        System.out.println("(Ouvrir l'inventaire      ('i')");
+        System.out.println("");
+    }
+
     public void launchGame() {
         System.out.println("______________________________________");
-        System.out.println("Êtes-vous prêt à vivre une aventure...");
-        System.out.println("         ...pas si palpitante que ça?");
+        System.out.println("Préparez-vous à vivre une aventure...");
+        System.out.println("         ...pas si palpitante que ça.");
         System.out.println("--------------------------------------");
-        System.out.println("");
-        System.out.println("(Tapez 'o' pour commencer le jeu ou 'n' pour quitter le jeu)");
-        System.out.println("");
-        System.out.println("");
-
     }
 
     public void rollDice() {
-        System.out.println("");
-        System.out.println("Voulez-vous lancer le dé?");
-        System.out.println("(Tapez 'o' pour lancer le dé, ou 'n' pour quitter le jeu)");
+        System.out.println("----------------------------------------------------");
+        System.out.println("Lancer le dé?           OUI ('o')          NON ('n')");
+        System.out.println("----------------------------------------------------");
+
     }
 
-    public void exitGame() {
-        System.out.println("Navré de vous voir déjà partir, peut être n'étiez-vous pas de taille...");
-        System.exit(0);
+    public void FightOrFlee() {
+        System.out.println("----------------------------------------------------");
+        System.out.println("[1] Attaquer         [2] Fuir         [3] Inventaire");
+        System.out.println("----------------------------------------------------");
+    }
+
+    public void youWin() {
+        System.out.println("");
+        System.out.println("Vous avez atteint la sortie.");
+        System.out.println("________________________");
+        System.out.println("Bravo vous avez gagné!");
+        System.out.println("------------------------");
+    }
+
+    public void youLose() {
+        System.out.println("________________________");
+        System.out.println("    Vous avez perdu!");
+        System.out.println("------------------------");
     }
 }
 

@@ -5,16 +5,16 @@ import characters.Warrior;
 import characters.Wizard;
 import game.Cell;
 
-public class Philter extends Protections {
+public class Club extends Weapons {
 
-    public Philter() {
-        super("Philtre", 2);
+    public Club() {
+        super("Massue", 3);
     }
 
     @Override
     public void interaction(Character player, Cell cell) {
-        if (player instanceof Warrior) {
-            System.out.println("... Mais vous êtes un guerrier, vous ne savez même pas ce qu'est un philtre!");
+        if (player instanceof Wizard) {
+            System.out.println("... Mais vous êtes un magicien, les armes c'est pour les barbares!");
             System.out.println(" ---------------------------------------------------");
         } else {
             player.getInventory().setInventory(cell);

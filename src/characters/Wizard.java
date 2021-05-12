@@ -1,12 +1,29 @@
 package characters;
 
+/**
+ * Class that represents one type of Character the player can choose to play.
+ * Currently it has 2 attributes :
+ * - 'hasThunderStrike' : boolean that lets you verify if player already has a weapon of type ThunderStrike equipped or not.
+ * - 'hasFireball' : boolean that lets you verify if player already has a weapon of type FireBall equipped or not.
+ *
+ * @see equipments.Thunderstrike
+ * @see equipments.Fireball
+ */
 public class Wizard extends Character {
 
     private boolean hasThunderstrike;
     private boolean hasFireBall;
 
+    /**
+     * Wizard Constructor.
+     * It has pre a set of attributes (declared previously on its parent's class Character)
+     * Lets you instantiate a Wizard type character requiring only one parameter :
+     *
+     * @param name : player's name.
+     * @see Character
+     */
     public Wizard(String name) {
-        super(name, 3, 3, 6, 8, 8, 15, null);
+        super(name, 3, 3, 6, 8, 8, 15, new Inventory());
         this.hasThunderstrike = false;
         this.hasFireBall = false;
     }

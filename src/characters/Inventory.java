@@ -4,10 +4,23 @@ import equipments.BigHealthPotion;
 import equipments.HealthPotion;
 import equipments.Protections;
 import equipments.Weapons;
-import game.Cell;
 
 import java.util.Arrays;
 
+/**
+ * Class that represents the player's inventory.
+ * It has 5 attributes :
+ * - 'inventory' : the actual player's inventory (array of objects)
+ * - 'weapons' : object of type Weapons that can be stored in inventory
+ * - 'protections' : object of type Protections that can be stored in inventory
+ * - 'healthPotion' : object representing a potion that can be stored in inventory
+ * - 'bigHealthPotion' : object representing a bigger potion that can be stored in inventory
+ *
+ * @see Weapons
+ * @see Protections
+ * @see HealthPotion
+ * @see BigHealthPotion
+ */
 public class Inventory {
     Object[] inventory;
     Weapons weapons;
@@ -15,8 +28,13 @@ public class Inventory {
     HealthPotion healthPotion;
     BigHealthPotion bigHealthPotion;
 
+    /**
+     * Inventory Constructor.
+     * Instantiation of the inventory with length set to 6.
+     * 1st slot can only store Weapons, 2nd slot can only store Protections, etc...
+     */
     public Inventory() {
-        inventory = new Object[6];
+        inventory = new Object[5];
 
         inventory[0] = getWeapons();
         inventory[1] = getProtections();

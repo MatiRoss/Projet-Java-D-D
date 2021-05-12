@@ -2,6 +2,9 @@ package game;
 
 import characters.Character;
 
+/**
+ * Class representing an empty cell of the game board
+ */
 public class EmptyCell extends Cell {
 
     public EmptyCell() {

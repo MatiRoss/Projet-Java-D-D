@@ -5,7 +5,16 @@ import characters.Warrior;
 import game.*;
 import menu.MenuText;
 
-public class Ennemy extends Cell {
+/**
+ * Class that represents the enemy archetype. It extends Cell as it can be found on the game board's cells.
+ * It has 5 attributes :
+ * - 'name' refers to the enemy's name
+ * - 'picture' refers to the enemy's picture (unused)
+ * - 'hp' refers to enemy's health points
+ * - 'attack' refers to the damage an enemy can inflict
+ * - 'isDead' is a boolean attribute that lets you verify if enemy is dead or not
+ */
+public class Enemy extends Cell {
 
     private String name;
     private String picture;
@@ -13,20 +22,40 @@ public class Ennemy extends Cell {
     private int attack;
     private boolean isDead;
 
-    public Ennemy() {
-    }
 
-    public Ennemy(String name) {
+    /**
+     * Enemy Constructor that requires only the name as a parameter.
+     *
+     * @param name;
+     */
+    public Enemy(String name) {
         this.name = name;
     }
 
-    public Ennemy(String name, int hp, int attack, boolean isDead) {
+    /**
+     * Enemy Constructor that requires all the parameters below :
+     *
+     * @param name;
+     * @param hp;
+     * @param attack;
+     * @param isDead;
+     */
+    public Enemy(String name, int hp, int attack, boolean isDead) {
         this.name = name;
         this.hp = hp;
         this.attack = attack;
         this.isDead = isDead;
     }
 
+    /**
+     * Overridden method inherited from Cell that handles the interaction between the player and the enemy on a specific cell.
+     * It calculates how much damage the player inflict and/or receive and does the same for the enemy.
+     * It takes 2 parameters :
+     *
+     * @param player : the current player
+     * @param cell   : the actual cell containing the enemy
+     * @see Cell#interaction(Character, Cell)
+     */
     @Override
     public void interaction(Character player, Cell cell) {
         while (getHp() > 0 && player.getHp() > 0) {

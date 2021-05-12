@@ -1,5 +1,16 @@
 package characters;
 
+/**
+ * Class that represents one type of Character the player can choose to play.
+ * Currently it has 3 attributes :
+ * - 'hasClub' : boolean that lets you verify if player already has a club equipped or not.
+ * - 'hasSword' : boolean that lets you verify if player already has a sword equipped or not.
+ * - 'hasBow' : boolean that lets you verify if player already has a bow equipped or not.
+ *
+ * @see equipments.Club
+ * @see equipments.Sword
+ * @see equipments.Bow
+ */
 public class Warrior extends Character {
 
     private boolean hasClub;
@@ -9,6 +20,14 @@ public class Warrior extends Character {
     public Warrior() {
     }
 
+    /**
+     * Warrior Constructor.
+     * It has pre a set of attributes (declared previously in its parent's class Character)
+     * Lets you instantiate a Warrior type character requiring only one parameter :
+     *
+     * @param name : player's name.
+     * @see Character
+     */
     public Warrior(String name) {
         super(name, 5, 5, 10, 5, 5, 10, new Inventory());
         this.hasClub = false;

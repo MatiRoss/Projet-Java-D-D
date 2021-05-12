@@ -3,8 +3,17 @@ package gameBoard;
 import enemies.*;
 import equipments.*;
 import game.*;
+
 import java.util.ArrayList;
 
+
+/**
+ * Class that represents the game board.
+ * The board is an ArrayList of objects of type Cell.
+ * It has an integer attribute playerPosition representing the position of the player on the current board.
+ * It has different integer attributes that lets you handle the numbers of objects on the board when generating a new game board.
+ * @see Cell
+ */
 public class Board {
     private int playerPosition;
     private ArrayList<Cell> board;
@@ -24,8 +33,12 @@ public class Board {
 
     private String difficulty;
 
+    /**
+     * Board constructor.
+     * It uses the integer attributes of the class to determine how many objects will be on the board when generated.
+     * @see Board#generateBoard()
+     */
     public Board() {
-        board = new ArrayList<Cell>();
 
         this.nbGobelins = 10;
         this.nbSorcerers = 10;
@@ -42,11 +55,14 @@ public class Board {
 
         generateBoard();
     }
-
+    /**
+     * Board constructor with higher difficulty.
+     * It uses the integer attributes of the class to determine how many objects will be on the board when generated.
+     * @see Board#generateBoard()
+     */
     public Board(String difficulty) {
 
         this.difficulty = difficulty;
-        board = new ArrayList<Cell>();
 
         this.nbGobelins = 15;
         this.nbSorcerers = 15;
@@ -62,9 +78,14 @@ public class Board {
 
     }
 
+    /**
+     * Method that fills up the board with the different objects (ennemies, equipments, potions...).
+     * Their numbers is based on the 'nbName' attribute defined in the constructor.
+     *
+     */
     public void generateBoard() {
         for (int i = 0; i < nbGobelins; i++) {
-            board.add(new Gobelin());
+            board.add(new Goblin());
         }
         for (int i = 0; i < nbSorcerers; i++) {
             board.add(new Sorcerer());
@@ -94,7 +115,7 @@ public class Board {
             board.add(new EmptyCell());
         }
         for (int i = 0; i < nbGobelinKings; i++) {
-            board.add(new GobelinKing());
+            board.add(new GoblinKing());
         }
         for (int i = 0; i < nbShields; i++) {
             board.add(new Shield());

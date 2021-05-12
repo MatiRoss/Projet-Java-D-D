@@ -5,15 +5,36 @@ import java.util.Scanner;
 import characters.*;
 import characters.Character;
 
+/**
+ * Class that represents the game menu.
+ * It has 2 attributes :
+ * - player (of type Character) that represents the current player.
+ *
+ * @see Character
+ * - keyboard (of type Scanner) that allows the player to type throughout the menu.
+ * @see Scanner
+ */
+
 public class Menu {
     private Character player;
     private final Scanner keyboard;
 
+    /**
+     * Menu Constructor.
+     * It sets the player attribute to null by default and instantiate a Scanner type object.
+     */
     public Menu() {
         this.player = null;
         this.keyboard = new Scanner(System.in);
     }
 
+    /**
+     * Method that instantiate a type of character (Warrior or Wizard) according to player's choice.
+     * Using Scanner class, player can choose the name of their character
+     *
+     * @see Warrior
+     * @see Wizard
+     */
     public void createCharacter() {
 
         MenuText text = new MenuText();

@@ -1,5 +1,8 @@
 package menu;
 
+/**
+ * Class that uses different methods to display different types of text throughout the game.
+ */
 public class MenuText {
 
     public void launchMenu() {

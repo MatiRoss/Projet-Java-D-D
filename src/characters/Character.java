@@ -6,8 +6,21 @@ import equipments.Protections;
 import equipments.Weapons;
 import game.Cell;
 
-import java.util.Scanner;
-
+/**
+ * Abstract class that represents the character's archetype.
+ * It has 9 attributes :
+ * - 'name' refers to the player's name
+ * - 'picture' refers to the player's picture (unused)
+ * - 'hp' refers to the player's health points
+ * - 'hpMin' refers to the minimum health points a player starts with
+ * - 'hpMax' refers to the maximum health points a player can get to
+ * - 'attack' refers to the damage the player can inflict
+ * - 'attackMin' refers to the minimum damage a player starts with
+ * - 'attackMax' refers to the maximum damage a player can inflict
+ * - 'inventory' refers to the player's inventory where he can store objects
+ *
+ * @see Inventory
+ */
 public abstract class Character {
 
     private String name;
@@ -20,14 +33,32 @@ public abstract class Character {
     private int attackMax;
     private Object[] inventory;
 
+
     public Character() {
 
     }
 
+    /**
+     * Character constructor that requires only the name as a parameter.
+     *
+     * @param name;
+     */
     public Character(String name) {
         this.name = name;
     }
 
+    /**
+     * Character constructor that requires all the parameters below :
+     *
+     * @param name;
+     * @param hp;
+     * @param hpMin;
+     * @param hpMax;
+     * @param attack;
+     * @param attackMin;
+     * @param attackMax;
+     * @param inventory;
+     */
     public Character(String name, int hp, int hpMin, int hpMax, int attack, int attackMin, int attackMax, Inventory inventory) {
         this.name = name;
         this.hp = hp;
@@ -40,6 +71,14 @@ public abstract class Character {
 
     }
 
+    /**
+     * Method that add the object to the player's inventory and handle different situations according to the type of object.
+     * It takes 2 parameters :
+     *
+     * @param player : the current player
+     * @param cell   : the cell that has the object to be added to the inventory
+     * @see Inventory
+     */
     public void addToInventory(Character player, Cell cell) {
 
         if (cell instanceof Weapons) {
@@ -84,8 +123,13 @@ public abstract class Character {
         }
     }
 
+    /**
+     * Method that displays the inventory to the player as a list of all objects contained in the bag.
+     * It takes one parameter :
+     * @param player : the current player
+     */
     public void displayInventory(Character player) {
-        Scanner keyboard = new Scanner(System.in);
+
         System.out.println("Vous fouillez dans votre sac..." + '\n');
         for (int i = 0; i < player.getInventory().length; i++) {
             if (player.getInventory()[i] == null) {
@@ -154,12 +198,22 @@ public abstract class Character {
                 + this.attack + " d'attaque. ";
     }
 
+    /**
+     * Method that simulate a dice roll
+     *
+     * @return an integer between 1 and 6
+     */
+
     public int throwDice() {
         int dice = 0;
         dice = (int) (Math.random() * 6 + 1);
         return dice;
     }
 
+    /**
+     * Method that displays the stats of the player.
+     * @return the player's name, hp, attack and defense
+     */
     public String showStats() {
         return getName() + " ==>  PV : " + getHp() + " ATK : " + getAttack() + " DEF : ";
     }

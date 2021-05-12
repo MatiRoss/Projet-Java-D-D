@@ -1,5 +1,6 @@
 package characters;
 
+<<<<<<< HEAD
 /**
  * Class that represents one type of Character the player can choose to play.
  * Currently it has 3 attributes :
@@ -11,11 +12,18 @@ package characters;
  * @see equipments.Sword
  * @see equipments.Bow
  */
+=======
+import equipments.Protections;
+import equipments.Weapons;
+
+>>>>>>> 36b9c8d1f80c1cdaefb77d302bc23e262f0dd1b3
 public class Warrior extends Character {
 
     private boolean hasClub;
     private boolean hasSword;
     private boolean hasBow;
+    private Weapons weapon;
+    private Protections protection;
 
     public Warrior() {
     }
@@ -33,6 +41,22 @@ public class Warrior extends Character {
         this.hasClub = false;
         this.hasSword = false;
         this.hasBow = false;
+    }
+
+    public void setWeapon(Weapons weapon) {
+        this.weapon = weapon;
+    }
+
+    public void setProtection(Protections protection) {
+        this.protection = protection;
+    }
+
+    public Weapons getWeapon() {
+        return weapon;
+    }
+
+    public Protections getProtection() {
+        return protection;
     }
 
     public void setHasBow(boolean hasBow) {

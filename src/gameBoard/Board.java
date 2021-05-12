@@ -39,6 +39,11 @@ public class Board {
      * @see Board#generateBoard()
      */
     public Board() {
+<<<<<<< HEAD
+=======
+        board = new ArrayList<Cell>();
+        this.playerPosition = 0;
+>>>>>>> 36b9c8d1f80c1cdaefb77d302bc23e262f0dd1b3
 
         this.nbGobelins = 10;
         this.nbSorcerers = 10;
@@ -63,6 +68,11 @@ public class Board {
     public Board(String difficulty) {
 
         this.difficulty = difficulty;
+<<<<<<< HEAD
+=======
+        board = new ArrayList<Cell>();
+        this.playerPosition = 0;
+>>>>>>> 36b9c8d1f80c1cdaefb77d302bc23e262f0dd1b3
 
         this.nbGobelins = 15;
         this.nbSorcerers = 15;

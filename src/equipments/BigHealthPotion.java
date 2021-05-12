@@ -14,24 +14,7 @@ public class BigHealthPotion extends Cell {
 
     @Override
     public void interaction(Character player, Cell cell) {
-        player.addToInventory(player, cell);
-        if (player.getHp() < player.getHpMax()) {
-            System.out.println("Vous buvez la potion... Glouglou... hips!");
-            if (player.getHp() >= player.getHpMin()) {
-                System.out.println("Vos points de vie augmentent de " + (player.getHpMax() - player.getHp()) + "!");
-                System.out.println("----------------------------------------------------");
-                player.setHp(player.getHpMax());
-            } else {
-                System.out.println("Vos points de vie augmentent de " + getHealth() + "!");
-                System.out.println("----------------------------------------------------");
-                player.setHp(player.getHp() + getHealth());
-            }
-            System.out.println("Vous avez désormais " + player.getHp() + " points de vie.");
-            System.out.println("----------------------------------------------------");
-        } else {
-            System.out.println("... Mais vous avez déjà atteint votre maximum de points de vie!");
-            System.out.println(" ---------------------------------------------------");
-        }
+        player.getInventory().setInventory(cell);
     }
 
     public int getHealth() {

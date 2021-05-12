@@ -48,6 +48,11 @@ public class MenuText {
         System.out.println("");
     }
 
+    public void displayInventory() {
+        System.out.println("(Ouvrir l'inventaire      ('i')");
+        System.out.println("");
+    }
+
     public void launchGame() {
         System.out.println("______________________________________");
         System.out.println("Préparez-vous à vivre une aventure...");

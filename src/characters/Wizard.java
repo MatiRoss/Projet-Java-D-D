@@ -1,5 +1,6 @@
 package characters;
 
+<<<<<<< HEAD
 /**
  * Class that represents one type of Character the player can choose to play.
  * Currently it has 2 attributes :
@@ -9,10 +10,17 @@ package characters;
  * @see equipments.Thunderstrike
  * @see equipments.Fireball
  */
+=======
+import equipments.Protections;
+import equipments.Weapons;
+
+>>>>>>> 36b9c8d1f80c1cdaefb77d302bc23e262f0dd1b3
 public class Wizard extends Character {
 
     private boolean hasThunderstrike;
     private boolean hasFireBall;
+    private Weapons weapon;
+    private Protections protection;
 
     /**
      * Wizard Constructor.
@@ -26,6 +34,22 @@ public class Wizard extends Character {
         super(name, 3, 3, 6, 8, 8, 15, new Inventory());
         this.hasThunderstrike = false;
         this.hasFireBall = false;
+    }
+
+    public void setWeapon(Weapons weapon) {
+        this.weapon = weapon;
+    }
+
+    public void setProtection(Protections protection) {
+        this.protection = protection;
+    }
+
+    public Weapons getWeapon() {
+        return weapon;
+    }
+
+    public Protections getProtection() {
+        return protection;
     }
 
     public void setHasThunderstrike(boolean hasThunderstrike) {
